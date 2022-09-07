@@ -1,7 +1,8 @@
 <script lang="ts">
+  export let props
 </script>
 
-<main>App</main>
+<main>test</main>
 
 <style>
 </style>
