@@ -22,11 +22,5 @@
     "tslib": "^2.4.0",
     "typescript": "^4.6.4",
     "vite": "^3.0.7"
-  },
-  "prettier":{
-    "tabWidth": 2,
-    "singleQuote": true,
-    "printWidth": 100,
-    "semi": false
   }
 }
