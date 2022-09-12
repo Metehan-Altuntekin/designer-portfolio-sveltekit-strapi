@@ -8,12 +8,7 @@ $page-padding: clamp(10px, 5vw, 150px);
   border: 0;
   box-sizing: border-box;
   color: white;
-}
-html,
-body {
-  width: 100%;
-  min-height: 100%;
-  background-color: $colorBg;
+  text-decoration: none;
 }
 
 @mixin section {
