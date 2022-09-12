@@ -1,17 +1,22 @@
 <script lang="ts">
   export let props
+
+  import MainLayout from './layouts/MainLayout.svelte'
+  // Sections
+  import Hero from './sections/Hero.svelte'
+  import Services from './sections/Services.svelte'
+  import About from './sections/About.svelte'
+  import Contact from './sections/Contact.svelte'
+  import Friends from './sections/Friends.svelte'
 </script>
 
-<main>
-  <div>a</div>
-</main>
+<MainLayout>
+  <Hero />
+  <Services />
+  <About />
+  <Contact />
+  <Friends />
+</MainLayout>
 
 <style lang="scss">
-  main {
-    div {
-      background-color: $colorPrimary;
-      height: 100px;
-      width: 100px;
-    }
-  }
 </style>

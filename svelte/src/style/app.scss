@@ -1,1 +1,23 @@
-$colorPrimary: hsl(220, 50%, 50%);
+@import "colors";
+@import "responsive";
+
+$page-padding: clamp(10px, 5vw, 150px);
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-sizing: border-box;
+  color: white;
+}
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+  background-color: $colorBg;
+}
+
+@mixin section {
+  padding: ($page-padding / 2);
+  padding-left: $page-padding;
+  padding-right: $page-padding;
+}
