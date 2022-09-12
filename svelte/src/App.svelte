@@ -2,7 +2,16 @@
   export let props
 </script>
 
-<main>test</main>
+<main>
+  <div>a</div>
+</main>
 
-<style>
+<style lang="scss">
+  main {
+    div {
+      background-color: $colorPrimary;
+      height: 100px;
+      width: 100px;
+    }
+  }
 </style>

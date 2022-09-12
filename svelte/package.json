@@ -4,9 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
+    "dev:silent": "vite",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --host",
+    "preview:silent": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
@@ -16,6 +18,7 @@
     "@typescript-eslint/parser": "^5.36.2",
     "eslint": "^8.23.0",
     "prettier": "^2.7.1",
+    "sass": "^1.54.9",
     "svelte": "^3.49.0",
     "svelte-check": "^2.8.0",
     "svelte-preprocess": "^4.10.7",
