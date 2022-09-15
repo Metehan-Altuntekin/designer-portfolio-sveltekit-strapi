@@ -5,7 +5,233 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Svelte + TS</title>
-    <script type="module" src="/src/main.ts" defer></script>
+    <script>
+      window.content = {
+        owner: {
+          name: 'Hüsnüye',
+          surname: 'Hüsnoğlu',
+          logo: 'https://images.unsplash.com/photo-1662400271968-f144ca4890b9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80',
+        },
+
+        skills: [
+          {
+            id: 1,
+            name: 'Blender',
+            icon: './assets/skills/1.png',
+            largeIcon: './assets/skills/1Large.png',
+          },
+          {
+            id: 2,
+            name: 'ICLone',
+            icon: './assets/skills/2.png',
+            largeIcon: './assets/skills/2Large.png',
+          },
+        ],
+
+        services: [
+          {
+            id: 1,
+            name: '3D Modeling',
+            icon: './assets/3d-modeling.svg',
+
+            textPrimary:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero architecto ut dignissimos sunt, ipsa provident ipsum.',
+            textSecondary:
+              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ipsum veniam sequi nemo labore, repellat natus recusandae accusantium saepe eos maiores tenetur nihil nisi. Blanditiis odit beatae distinctio vero? Suscipit ratione sunt doloribus odio illo expedita, vel ipsa iste quas fugiat dicta id quam? Quo suscipit itaque nulla! Porro, corporis?',
+
+            relatedSkills: [1, 2],
+            relatedTags: ['Realism', 'Low Poly', '3D', 'Cartoon', 'High Poly'],
+          },
+          {
+            id: 2,
+            name: '3D Animation',
+            icon: './assets/3d-modeling.svg',
+
+            textPrimary:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero architecto ut dignissimos sunt, ipsa provident ipsum.',
+            textSecondary:
+              'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus ipsum veniam sequi nemo labore, repellat natus recusandae accusantium saepe eos maiores tenetur nihil nisi. Blanditiis odit beatae distinctio vero? Suscipit ratione sunt doloribus odio illo expedita, vel ipsa iste quas fugiat dicta id quam? Quo suscipit itaque nulla! Porro, corporis?',
+
+            relatedSkills: [2, 1],
+            relatedTags: ['Cartoon', 'Looney Tunes', 'Animation', 'Figures'],
+          },
+        ],
+
+        projects: [
+          {
+            id: 1,
+            name: 'Blue Haired Chick',
+            thumbnail: './assets/projects/1.jpg',
+            images: [
+              './assets/projects/1.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [],
+            description:
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam nesciunt adipisci laudantium et cum unde ab qui incidunt eius at quod magni harum possimus! Quod distinctio repellendus nisi veritatis!',
+
+            relatedServices: [1],
+            relatedSkills: [1],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 2,
+            name: 'Motorbike I Guess',
+            thumbnail: './assets/projects/2.jpg',
+            images: [
+              './assets/projects/2.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: ['http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'],
+            description:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eos officiis soluta quae reprehenderit esse qui architecto voluptate. Quibusdam numquam quasi magni, quos quod ipsum placeat exercitationem sunt, autem commodi ducimus a impedit unde provident, eos aut blanditiis totam dolorum! veritatis!',
+
+            relatedServices: [2],
+            relatedSkills: [2],
+            relatedTags: ['High Poly', 'Cartoon'],
+          },
+          {
+            id: 3,
+            name: 'Minions',
+            thumbnail: './assets/projects/3.jpg',
+            images: [
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+              './assets/projects/5.jpg',
+              './assets/projects/9.jpg',
+            ],
+            videos: [
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+            ],
+            description:
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam nesciunt adipisci laudantium et cum unde ab qui incidunt eius at quod possimus!',
+
+            relatedServices: [2],
+            relatedSkills: [2],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 4,
+            name: 'I Dunno',
+            thumbnail: './assets/projects/4.jpg',
+            images: [
+              './assets/projects/4.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [],
+            description:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eos officiis soluta quae reprehenderit esse qui architecto voluptate. Quibusdam numquam quasi magni, quos quod ipsum placeat exercitationem sunt, autem commodi ducimus a impedit unde provident, eos aut blanditiis totam dolorum!',
+
+            relatedServices: [1],
+            relatedSkills: [1],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 5,
+            name: 'I Gues Greenie',
+            thumbnail: './assets/projects/5.jpg',
+            images: [
+              './assets/projects/5.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+              'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+            ],
+            description:
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam nesciunt adipisci laudantium et cum unde ab qui incidunt eius at quod magni harum possimus! Quod distinctio repellendus nisi veritatis!',
+
+            relatedServices: [2],
+            relatedSkills: [2],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 6,
+            name: 'Hello There',
+            thumbnail: './assets/projects/6.jpg',
+            images: [
+              './assets/projects/6.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [],
+            description:
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam nesciunt adipisci laudantium et cum unde ab qui incidunt eius at quod magni harum possimus! Quod distinctio repellendus nisi veritatis!',
+
+            relatedServices: [1, 2],
+            relatedSkills: [1, 2],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 7,
+            name: 'Boom Witch Get Off',
+            thumbnail: './assets/projects/7.jpg',
+            images: [
+              './assets/projects/7.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [],
+            description:
+              'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos eos officiis soluta quae reprehenderit esse qui architecto voluptate. Quibusdam numquam quasi magni, quos quod ipsum placeat exercitationem sunt, autem commodi ducimus a impedit unde provident, eos aut blanditiis totam dolorum!',
+
+            relatedServices: [1, 2],
+            relatedSkills: [1, 2],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 8,
+            name: 'Exactly 20 Character',
+            thumbnail: './assets/projects/8.jpg',
+            images: [
+              './assets/projects/8.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [],
+            description:
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam nesciunt adipisci laudantium et cum unde ab qui incidunt eius at quod magni harum possimus! Quod distinctio repellendus nisi veritatis!',
+
+            relatedServices: [1],
+            relatedSkills: [1],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+          {
+            id: 9,
+            name: 'Gotta Be Palm Tree',
+            thumbnail: './assets/projects/9.jpg',
+            images: [
+              './assets/projects/9.jpg',
+              './assets/projects/2.jpg',
+              './assets/projects/3.jpg',
+              './assets/projects/4.jpg',
+            ],
+            videos: [],
+            description:
+              'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit, nam nesciunt adipisci laudantium et cum unde ab qui incidunt eius at quod magni harum possimus! Quod distinctio repellendus nisi veritatis!',
+
+            relatedServices: [1],
+            relatedSkills: [1],
+            relatedTags: ['High Poly', 'Realism'],
+          },
+        ],
+      }
+    </script>
+    <script type="module" src="/src/main.ts"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -30,5 +256,6 @@
       }
     </style>
   </head>
+
   <body></body>
 </html>
