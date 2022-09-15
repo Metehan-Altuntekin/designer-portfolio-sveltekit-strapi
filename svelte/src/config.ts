@@ -19,3 +19,5 @@ export const NAV: {
     src: '#about',
   },
 ]
+
+export const CONTENT = window.content

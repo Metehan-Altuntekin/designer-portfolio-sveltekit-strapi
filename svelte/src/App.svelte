@@ -1,6 +1,4 @@
 <script lang="ts">
-  export let props
-
   import MainLayout from './layouts/MainLayout.svelte'
   // Sections
   import Hero from './sections/Hero.svelte'
