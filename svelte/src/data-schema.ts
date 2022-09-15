@@ -10,7 +10,7 @@ export const dataSchema = {
 
   skills: [
     {
-      id: Number || '',
+      id: Number,
       name: [2, 20],
       icon: URL,
       largeIcon: URL,
@@ -28,7 +28,7 @@ export const dataSchema = {
       textPrimary: [100, 200],
       textSecondary: [200, 400],
 
-      relatedSkills: [[2, 20]],
+      relatedSkills: [Number], // an array of skill ids
       relatedTags: [[2, 20]],
     },
   ],
@@ -43,8 +43,8 @@ export const dataSchema = {
       videos: [URL],
       description: [150, 300],
 
-      relatedServices: [[4, 20]],
-      relatedSkills: [[2, 20]],
+      relatedServices: [Number], // an array of service ids
+      relatedSkills: [Number], // an array of skill ids
       relatedTags: [[2, 20]],
     },
   ],
