@@ -20,7 +20,7 @@
     {#each NAV as option}
       <a href={option?.src} on:click={option?.onClick}>{option.name}</a>
     {/each}
-    <a href="#contact" class="special">Contact</a>
+    <a class="button secondary sm" href="#contact">Contact</a>
   </nav>
 
   <!-- TODO create a component for mutually transitioning elements like these -->
@@ -42,7 +42,7 @@
         {#each NAV as option}
           <a href={option?.src} on:click={option?.onClick}>{option.name}</a>
         {/each}
-        <a href="#contact" class="special">Contact</a>
+        <a class="secondary sm" href="#contact">Contact</a>
       </nav>
     {/if}
   {/if}
@@ -58,7 +58,6 @@
     inset: 0;
     bottom: auto;
     z-index: 9;
-
     @include section;
 
     .logo {
@@ -106,13 +105,7 @@
         line-height: 1;
         padding: 0.5em 1em;
 
-        &.special {
-          background-color: $colorPrimary;
-        }
-
-        &:hover {
-          background-color: $hoverBgMask;
-        }
+        @include hover;
       }
 
       &.mobile-nav {
