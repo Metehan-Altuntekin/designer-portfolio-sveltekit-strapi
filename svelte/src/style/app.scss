@@ -2,24 +2,3 @@
 @import "responsive";
 @import "typography";
 @import "utils";
-
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
-  color: white;
-  text-decoration: none;
-}
-
-img,
-svg {
-  max-width: 100%;
-  max-height: 100%;
-  object-position: center;
-  object-fit: contain;
-}
-
-ul {
-  list-style-type: none;
-}

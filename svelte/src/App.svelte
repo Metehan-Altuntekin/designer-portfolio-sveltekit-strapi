@@ -1,4 +1,5 @@
 <script lang="ts">
+  import './style/global.css'
   import MainLayout from './layouts/MainLayout.svelte'
   // Sections
   import Hero from './sections/Hero.svelte'
