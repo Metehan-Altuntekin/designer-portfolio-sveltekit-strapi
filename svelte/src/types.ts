@@ -6,8 +6,8 @@ export type Service = {
   textPrimary: string
   textSecondary: string
 
-  relatedSkills: number[] | undefined
-  relatedTags: string[] | undefined
+  relatedSkills?: number[] 
+  relatedTags?: string[] 
 }
 
 export type Skill = {

@@ -1,7 +1,7 @@
 export const NAV: {
   name: string
-  onClick: any | undefined // TODO MouseEventHandler<HTMLAnchorElement> error
-  src: string | undefined
+  onClick?: any  // TODO MouseEventHandler<HTMLAnchorElement> error
+  src?: string
 }[] = [
   {
     name: 'Portfolio',
