@@ -57,3 +57,14 @@
 
   @include hover();
 }
+
+.chip {
+  transition: 0.1s;
+  line-height: 1;
+  font-size: 0.8rem;
+  padding: 0.35em 1em;
+  background-color: #fff3;
+  border-radius: 999px;
+  white-space: nowrap;
+  @include hover();
+}
