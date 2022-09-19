@@ -1,7 +1,8 @@
 @import "colors";
 @import "responsive";
+@import "typography";
+@import "utils";
 
-$page-padding: clamp(10px, 5vw, 150px);
 * {
   padding: 0;
   margin: 0;
@@ -9,12 +10,6 @@ $page-padding: clamp(10px, 5vw, 150px);
   box-sizing: border-box;
   color: white;
   text-decoration: none;
-}
-
-@mixin section {
-  padding: ($page-padding / 2);
-  padding-left: $page-padding;
-  padding-right: $page-padding;
 }
 
 img,
@@ -25,49 +20,6 @@ svg {
   object-fit: contain;
 }
 
-@mixin before {
-  position: relative;
-  z-index: 0;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    transition: 0.15s;
-    border-radius: inherit; // Prevent overflow on the corners
-    @content;
-  }
-}
-
-@mixin button {
-  background-color: $colorPrimary;
-  border-radius: 5px;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: 0.1s;
-
-  line-height: 0;
-  padding: 0.85em 1.2em;
-
-  font-size: 1.5rem;
-  font-family: Poppins;
-  font-weight: 500;
-
-  &.sm {
-    font-size: 0.9rem;
-  }
-  &.md {
-    font-size: 1.2rem;
-  }
-  &.lg {
-    font-size: 1.6rem;
-  }
-
-  @include before();
-  &:hover {
-    @include before {
-      backdrop-filter: saturate(120%) brightness(80%);
-    }
-  }
+ul {
+  list-style-type: none;
 }

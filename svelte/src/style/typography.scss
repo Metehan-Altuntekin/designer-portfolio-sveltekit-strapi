@@ -1,0 +1,59 @@
+@import "colors";
+@import "utils";
+
+@mixin title {
+  font-size: clamp(1.2rem, 5vmin, 4rem);
+  font-family: Kanit, Poppins, Segoe UI, sans-serif;
+  font-weight: 600;
+  line-height: 0;
+  gap: 0.3em;
+  margin-bottom: 0.75em;
+}
+
+@mixin paragraph($sort, $font: Kanit) {
+  font-family: $font, Poppins, Segoe UI, sans-serif;
+  font-weight: 400;
+
+  white-space: wrap;
+
+  max-width: 40em;
+  margin-bottom: 1em;
+
+  @if $sort == 1 {
+    color: #fff;
+    font-size: 1rem;
+  }
+
+  @if $sort == 2 {
+    color: #fff9;
+    font-size: 0.9rem;
+  }
+}
+
+.button {
+  background-color: $colorPrimary;
+  &.secondary {
+    background-color: #fff2;
+  }
+  transition: 0.1s;
+  white-space: nowrap;
+
+  line-height: 1;
+  padding: 0.5em 1.2em;
+  border-radius: 5px;
+
+  .sm {
+    font-size: 1.6rem;
+  }
+  .md {
+    font-size: 1.2rem;
+  }
+  .lg {
+    font-size: 1.6rem;
+  }
+
+  font-family: Poppins;
+  font-weight: 500;
+
+  @include hover();
+}

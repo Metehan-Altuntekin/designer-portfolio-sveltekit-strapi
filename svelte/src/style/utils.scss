@@ -1,0 +1,58 @@
+@import "responsive";
+
+$page-padding: clamp(10px, 5vw, 150px);
+$page-max-width: 1600px;
+
+@mixin before {
+  position: relative;
+  z-index: 0;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    transition: 0.15s;
+    border-radius: inherit; // Prevent overflow on the corners
+    @content;
+  }
+}
+
+@mixin flex($even: true, $vertical: center, $horizontal: center) {
+  display: flex;
+  align-items: $vertical;
+  justify-content: $horizontal;
+
+  @if $even {
+    > * {
+      flex-basis: 0;
+      flex-grow: 1;
+    }
+  }
+}
+
+@mixin hover() {
+  cursor: pointer;
+
+  @include before();
+  &:hover {
+    @include before {
+      backdrop-filter: saturate(120%) brightness(80%);
+    }
+  }
+}
+
+@mixin section {
+  padding: ($page-padding / 2);
+  padding-left: $page-padding;
+  padding-right: $page-padding;
+  width: 100%;
+  overflow-x: clip;
+
+  @include xl {
+    // set max width of the content to 1500px
+    $padding: max(calc(calc(100vw - 1500px) / 2), $page-padding);
+    padding-left: $padding;
+    padding-right: $padding;
+  }
+}
