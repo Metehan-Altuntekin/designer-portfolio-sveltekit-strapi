@@ -5,8 +5,6 @@
   import type { Skill } from '../../types'
   import skills from '../../stores/skills'
   import { filterParams, toggleFilterParams } from '../../stores/projects'
-  import type { FilterParams } from '../../stores/projects'
-  import { onMount } from 'svelte'
 
   function handleSkillSelection(skill: Skill) {
     toggleFilterParams(serviceId, 'skills', skill.id)

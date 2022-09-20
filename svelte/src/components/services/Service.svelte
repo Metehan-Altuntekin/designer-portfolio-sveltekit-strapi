@@ -22,7 +22,7 @@
     <p class="primary">{textPrimary}</p>
     <p class="secondary">{textSecondary}</p>
     <Skills serviceId={service.id} skillIds={relatedSkills} />
-    <Tags tags={relatedTags} />
+    <Tags serviceId={service.id} tags={relatedTags} />
 
     <div class="CTAs">
       <a class="button md" href="#contact">Get an Offer</a>

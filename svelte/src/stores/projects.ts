@@ -30,7 +30,7 @@ export const sortedProjects: Readable<SortedProjects> = derived(projects, ($proj
 export interface FilterParams {
   [key: string]: {
     skills?: number[]
-    tags?: number[]
+    tags?: string[]
   }
 }
 export const filterParams: Writable<FilterParams> = writable(
@@ -42,7 +42,7 @@ export const filterParams: Writable<FilterParams> = writable(
     {}
   )
 )
-export function toggleFilterParams(serviceId: number, paramType: string, value: number) {
+export function toggleFilterParams(serviceId: number, paramType: string, value: number | string) {
   filterParams.update((services): FilterParams => {
     console.info('toggleFilterParams', services[serviceId])
     return {
