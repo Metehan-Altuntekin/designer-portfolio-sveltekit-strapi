@@ -80,6 +80,7 @@
       }
 
       img {
+        object-fit: contain;
         transform: translate(35%);
         @include sm {
           transform: translate(0);

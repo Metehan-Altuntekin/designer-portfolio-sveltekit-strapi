@@ -14,6 +14,7 @@
 <style lang="scss">
   ul {
     @include flex(false, top, start);
+    flex-wrap: wrap;
     gap: 0.5rem;
     margin: 1rem 0;
   }

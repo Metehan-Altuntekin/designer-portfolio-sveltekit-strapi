@@ -31,7 +31,7 @@
   </section>
 
   <section class="portfolio">
-    {#each projects as project}
+    {#each projects.slice(0, 4) as project}
       <Project {project} />
     {/each}
   </section>
@@ -42,15 +42,27 @@
     gap: 5vw;
     margin-bottom: 10vh;
 
-    @include flex(true, flex-start);
+    display: flex;
+    align-items: start;
+    flex-direction: column;
+
+    @include sm {
+      flex-direction: row;
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        right: 0;
+      }
+    }
 
     > .content {
-      position: sticky;
+      @include sm {
+        position: sticky;
+      }
       top: 15vh;
       left: 0;
       display: flex;
       flex-direction: column;
-
+      width: 100%;
       h1 {
         @include title;
         display: flex;
@@ -75,23 +87,17 @@
         display: flex;
         justify-self: start;
         align-items: flex-start;
-        flex-direction: column;
         gap: 1rem;
         margin-top: 2rem;
-
-        @include sm {
-          flex-direction: row;
-        }
       }
     }
 
     > .portfolio {
-      background-color: #fff1;
-      height: 200vh;
-    }
-    &:nth-child(even) {
-      flex-direction: row-reverse;
-      right: 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-auto-rows: max-content;
+      gap: 1rem;
+      width: 100%;
     }
   }
 </style>
