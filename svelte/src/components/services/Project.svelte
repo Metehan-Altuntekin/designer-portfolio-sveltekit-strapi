@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { fly } from 'svelte/transition'
   import type { Project } from '../../types'
   import services from '../../stores/services'
   import skills from '../../stores/skills'
@@ -8,7 +9,7 @@
   const { id, name, thumbnail: src, relatedServices, relatedSkills, relatedTags } = project
 </script>
 
-<figure>
+<figure transition:fly={{ y: 100 }}>
   <img {src} alt={name} />
   <figcaption>
     <div class="left-col">

@@ -8,9 +8,10 @@
   import Tags from './Tags.svelte'
   import Project from './Project.svelte'
 
-  import { sortedProjects } from '../../stores/projects'
+  import { sortedProjects, filteredProjects } from '../../stores/projects'
 
-  $: projects = $sortedProjects[id]
+  $: projects = $filteredProjects[id]
+  $: console.info($filteredProjects)
 </script>
 
 <article>
@@ -31,9 +32,13 @@
   </section>
 
   <section class="portfolio">
-    {#each projects.slice(0, 4) as project}
-      <Project {project} />
-    {/each}
+    {#if projects.length < 1}
+      <div class="no-data">No projects were found with the given criteria</div>
+    {:else}
+      {#each projects.slice(0, 4) as project}
+        <Project {project} />
+      {/each}
+    {/if}
   </section>
 </article>
 

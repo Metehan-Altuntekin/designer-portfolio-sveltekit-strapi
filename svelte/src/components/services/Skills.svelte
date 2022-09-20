@@ -8,7 +8,7 @@
 
   function handleSkillSelection(skill: Skill) {
     toggleFilterParams(serviceId, 'skills', skill.id)
-    console.info($filterParams)
+    // console.info($filterParams)
   }
 </script>
 

@@ -13,6 +13,8 @@ export default projects
 
 type SortedProjects = { [key: number]: Project[] }
 
+// TODO find out how this makes keys with numbers and apply to filterParams
+
 export const sortedProjects: Readable<SortedProjects> = derived(projects, ($projects) => {
   return $projects.reduce((prev, curr) => {
     curr.relatedServices.map((sId) => {
@@ -44,7 +46,7 @@ export const filterParams: Writable<FilterParams> = writable(
 )
 export function toggleFilterParams(serviceId: number, paramType: string, value: number | string) {
   filterParams.update((services): FilterParams => {
-    console.info('toggleFilterParams', services[serviceId])
+    // console.info('toggleFilterParams', services[serviceId])
     return {
       ...services,
       [`${serviceId}`]: {
@@ -58,3 +60,49 @@ export function toggleFilterParams(serviceId: number, paramType: string, value: 
 }
 
 // TODO filtered stores for each service
+
+export const filteredProjects: Readable<SortedProjects> = derived(
+  [sortedProjects, filterParams],
+  ([$sortedProjects, $filterParams]) => {
+    return Object.keys($sortedProjects).reduce((prev, key) => {
+      console.info(prev)
+      return {
+        ...prev,
+        [key]: applyFilters($sortedProjects[key], $filterParams[`${key}`]),
+      }
+      return {
+        ...prev,
+        [key]: prev[key] ? [...prev[key], applyFilters($sortedProjects[key], $filterParams[`${key}`])] : prev[key],
+      }
+    }, {})
+  }
+)
+
+function applyFilters(projects: Project[], params: { skills?: number[]; tags?: string[] }): Project[] {
+  console.info('applyFilters')
+
+  if (params.skills.length < 1 && params.tags.length < 1) return projects
+
+  return projects
+    .reduce((prev, curr) => {
+      console.info('applyFilters step 1')
+      const skillScore = curr.relatedServices.reduce((prev, curr) => {
+        if (params.skills.includes(curr)) return prev + 1
+        return prev
+      }, 0)
+
+      const tagScore = curr.relatedTags.reduce((prev, curr) => {
+        if (params.tags.includes(curr)) return prev + 1
+        return prev
+      }, 0)
+
+      const totalScore = skillScore + tagScore
+
+      console.info(totalScore)
+
+      if (totalScore == 0) return prev
+
+      if (totalScore > 0) return [...prev, { ...curr, filterScore: totalScore }]
+    }, [])
+    .sort((a, b) => a.filterScore - b.filterScore)
+}
