@@ -12,6 +12,7 @@
   color: white;
   text-decoration: none;
   font-family: Kanit, Montserrat, Poppins, 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
 }
 
 html,

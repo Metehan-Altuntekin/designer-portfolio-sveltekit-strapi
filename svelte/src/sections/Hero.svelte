@@ -1,7 +1,7 @@
 <script lang="ts">
 </script>
 
-<section>
+<section id="hero">
   <h1>Welcome to the awesome portfolio site</h1>
   <p>This portfolio site project made with PHP & Svelte! It runs on Apache server and doesn't require Node.js!</p>
   <div class="CTAs">
