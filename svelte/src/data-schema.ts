@@ -100,11 +100,12 @@ export const dataSchema = {
       heading: [20, 40],
       availability: {
         heading: [20, 40],
-        isAvailable: Boolean,
+        status: Boolean,
       },
       info: {
         location: {
-          title: [4, 50],
+          title: [4, 12],
+          text: [4.5],
           link: URL,
         },
         email: {
@@ -119,7 +120,7 @@ export const dataSchema = {
           title: [4, 12],
           options: [
             {
-              title: [2, 20],
+              name: [2, 20],
               link: URL,
               icon: URL,
             },
