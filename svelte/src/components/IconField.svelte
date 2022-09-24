@@ -29,7 +29,7 @@
     --icon-padding: calc(var(--icon-size) * 0.2);
 
     --font-size: 1rem;
-    --input-padding: calc(var(--font-size) * 0.8);
+    --input-padding: calc(var(--font-size) * 0.6);
 
     background-color: var(--bg-color);
     color: var(--text-color);
