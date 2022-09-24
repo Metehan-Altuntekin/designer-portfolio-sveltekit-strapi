@@ -34,3 +34,7 @@ svg {
 ul {
   list-style-type: none;
 }
+
+a, button {
+  cursor: pointer;
+}
