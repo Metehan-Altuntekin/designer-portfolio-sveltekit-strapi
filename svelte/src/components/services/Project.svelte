@@ -1,15 +1,18 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
+  // types
   import type { Project } from '../../types'
+  // stores
   import services from '../../stores/services'
   import skills from '../../stores/skills'
+  import { openModal } from '../../stores/projectDetailsModal'
 
   export let project: Project
 
   const { id, name, thumbnail: src, relatedServices, relatedSkills, relatedTags } = project
 </script>
 
-<figure transition:fly={{ y: 100 }}>
+<figure transition:fly={{ y: 100 }} on:click={() => openModal(project)}>
   <img {src} alt={name} />
   <figcaption>
     <div class="left-col">
