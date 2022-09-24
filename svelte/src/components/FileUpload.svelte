@@ -7,7 +7,7 @@
 </script>
 
 <div>
-  <label for={id} class="button secondary sm">Browse Files</label>
+  <label for={id} class="button secondary xs">Browse Files</label>
   <input type="file" {id} bind:this={input} multiple />
 </div>
 

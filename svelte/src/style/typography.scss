@@ -42,8 +42,11 @@
   padding: 0.5em 1.2em;
   border-radius: 5px;
 
-  &.sm {
+  &.xs {
     font-size: 0.8rem;
+  }
+  &.sm {
+    font-size: 1rem;
   }
   &.md {
     font-size: 1.2rem;

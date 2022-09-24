@@ -6,6 +6,8 @@
     availability,
     info: { location, email, phone, socialMedia },
   } = CONTENT.sections.contact
+
+  import ContactForm from '../components/contact/ContactForm.svelte'
 </script>
 
 <section id="contact">
@@ -42,6 +44,7 @@
       {/each}
     </ul>
   </article>
+  <ContactForm />
 </section>
 
 <style lang="scss">
@@ -52,6 +55,7 @@
 
     @include flex();
     flex-direction: column;
+    gap: 100px;
 
     @include lg {
       flex-direction: row;
