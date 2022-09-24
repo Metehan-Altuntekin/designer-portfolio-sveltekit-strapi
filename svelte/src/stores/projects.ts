@@ -65,27 +65,19 @@ export const filteredProjects: Readable<SortedProjects> = derived(
   [sortedProjects, filterParams],
   ([$sortedProjects, $filterParams]) => {
     return Object.keys($sortedProjects).reduce((prev, key) => {
-      console.info(prev)
       return {
         ...prev,
         [key]: applyFilters($sortedProjects[key], $filterParams[`${key}`]),
-      }
-      return {
-        ...prev,
-        [key]: prev[key] ? [...prev[key], applyFilters($sortedProjects[key], $filterParams[`${key}`])] : prev[key],
       }
     }, {})
   }
 )
 
 function applyFilters(projects: Project[], params: { skills?: number[]; tags?: string[] }): Project[] {
-  console.info('applyFilters')
-
   if (params.skills.length < 1 && params.tags.length < 1) return projects
 
   return projects
     .reduce((prev, curr) => {
-      console.info('applyFilters step 1')
       const skillScore = curr.relatedServices.reduce((prev, curr) => {
         if (params.skills.includes(curr)) return prev + 1
         return prev
@@ -97,8 +89,6 @@ function applyFilters(projects: Project[], params: { skills?: number[]; tags?: s
       }, 0)
 
       const totalScore = skillScore + tagScore
-
-      console.info(totalScore)
 
       if (totalScore == 0) return prev
 
