@@ -9,5 +9,8 @@
 </main>
 <Footer />
 
-<style lang='scss'>
+<style lang="scss">
+  main > :global(section) {
+    @include section;
+  }
 </style>

@@ -59,9 +59,9 @@
 
     @include lg {
       flex-direction: row;
-      // padding-bottom: unset;
-      // padding-top: unset;
-      // @include section;
+      > * {
+        flex-basis: 100%;
+      }
     }
   }
 

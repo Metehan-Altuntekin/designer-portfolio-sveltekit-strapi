@@ -6,8 +6,8 @@ export type Service = {
   textPrimary: string
   textSecondary: string
 
-  relatedSkills?: number[] 
-  relatedTags?: string[] 
+  relatedSkills?: number[]
+  relatedTags?: string[]
 }
 
 export type Skill = {
@@ -30,4 +30,11 @@ export type Project = {
   relatedServices: number[]
   relatedSkills: number[]
   relatedTags: string[]
+}
+
+export type Friend = {
+  name: string
+  image: string
+  roles: string[]
+  link: string
 }
