@@ -11,4 +11,6 @@ export function openModal(project: Project): void {
 
 export function closeModal(): void {
   selectedProject.set(null)
+  // replace url with no hash
+  window.history.replaceState(null, '', window.location.pathname)
 }

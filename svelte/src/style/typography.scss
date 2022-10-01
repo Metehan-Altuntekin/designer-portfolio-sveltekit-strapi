@@ -5,12 +5,12 @@
   font-size: clamp(1.2rem, 5vmin, 4rem);
   font-family: Kanit, Poppins, Segoe UI, sans-serif;
   font-weight: 600;
-  line-height: 0;
+  line-height: 1;
   gap: 0.3em;
   margin-bottom: 0.75em;
 }
 
-@mixin paragraph($sort, $font: Kanit) {
+@mixin paragraph($sort: 1, $font: Kanit) {
   font-family: $font, Poppins, Segoe UI, sans-serif;
   font-weight: 400;
 
@@ -62,12 +62,13 @@
 }
 
 .chip {
+  display: block;
   transition: 0.1s;
   line-height: 1;
   font-size: 0.8rem;
   font-family: Poppins;
   font-weight: 500;
-  padding: 0.35em 1em;
+  padding: 0.5em 1em;
   background-color: #fff3;
   border-radius: 999px;
   white-space: nowrap;
