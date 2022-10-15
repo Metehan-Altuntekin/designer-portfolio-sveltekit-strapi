@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
   import 'swiper/css'
   import 'swiper/css/autoplay'
   import 'swiper/css/pagination'
@@ -9,15 +8,6 @@
   import { selectedProject, closeModal } from '../stores/projectDetailsModal'
   import { getService } from '../stores/services'
   import skills, { getSkill } from '../stores/skills'
-
-  onMount(() => {
-    // TODO disable document scrolling when modal is open
-    window.document.body.style.overflow = 'hidden'
-    console.info(getComputedStyle(document.body).overflow)
-    return () => {
-      window.document.body.style.overflow = 'auto'
-    }
-  })
 
   $: if (!!$selectedProject) {
     window.location.hash = 'project-details' // set hash when project is selected
