@@ -31,14 +31,22 @@ $page-max-width: 1600px;
   }
 }
 
-@mixin hover() {
+@mixin hover($sort: darken, $transition: 0.2s) {
   cursor: pointer;
+  transition: $transition;
 
-  @include before();
+  @include before(); // if not included before the hover, the hover won't transition
   &:hover {
     @include before {
-      backdrop-filter: saturate(120%) brightness(80%);
+      @if darken {
+        backdrop-filter: saturate(120%) brightness(80%);
+      }
+      @if lighten {
+        backdrop-filter: saturate(80%) brightness(150%);
+      }
     }
+
+    @content; // not required but can be used to add more styles
   }
 }
 
