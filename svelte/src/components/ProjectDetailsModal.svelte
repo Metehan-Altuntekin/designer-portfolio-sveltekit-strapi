@@ -9,13 +9,6 @@
   import { getService } from '../stores/services'
   import skills, { getSkill } from '../stores/skills'
 
-  $: if (!!$selectedProject) {
-    window.location.hash = 'project-details' // set hash when project is selected
-    window.onhashchange = (e) => {
-      if (e.newURL.includes('project-details')) return // do nothing if hash is set to project-details
-      closeModal()
-    }
-  }
 </script>
 
 {#if $selectedProject}
