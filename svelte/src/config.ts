@@ -1,3 +1,5 @@
+import { openPortfolio } from "./stores/portfolio"
+
 export const NAV: {
   name: string
   onClick?: any  // TODO MouseEventHandler<HTMLAnchorElement> error
@@ -5,7 +7,7 @@ export const NAV: {
 }[] = [
   {
     name: 'Portfolio',
-    onClick: undefined,
+    onClick: openPortfolio,
     src: '#portfolio',
   },
   {

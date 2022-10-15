@@ -7,6 +7,8 @@
   import About from './sections/About.svelte'
   import Contact from './sections/Contact.svelte'
   import Friends from './sections/Friends.svelte'
+
+  import Portfolio from './sections/Portfolio.svelte'
 </script>
 
 <MainLayout>
@@ -15,6 +17,7 @@
   <About />
   <Contact />
   <Friends />
+  <Portfolio />
 </MainLayout>
 
 <style lang="scss">
