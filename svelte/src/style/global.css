@@ -35,6 +35,7 @@ ul {
   list-style-type: none;
 }
 
-a, button {
+a, button, label {
   cursor: pointer;
+  user-select: none;
 }
