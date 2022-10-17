@@ -2,9 +2,9 @@ import type { Readable } from 'svelte/store'
 import { readable, get } from 'svelte/store'
 import type { Service } from '../types'
 
-import { CONTENT } from '../config'
+import content from './content'
 
-const services: Readable<Service[]> = readable(CONTENT.services)
+const services: Readable<Service[]> = readable(get(content).services)
 
 export function getService(id: number): Service {
   return get(services).find((s) => s.id === id)

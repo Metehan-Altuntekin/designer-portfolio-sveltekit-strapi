@@ -1,8 +1,10 @@
-import { openPortfolio } from "./stores/portfolio"
+import { openPortfolio } from './stores/portfolio'
+
+export const CONTENT = window.content
 
 export const NAV: {
   name: string
-  onClick?: any  // TODO MouseEventHandler<HTMLAnchorElement> error
+  onClick?: () => void // TODO MouseEventHandler<HTMLAnchorElement> error
   src?: string
 }[] = [
   {
@@ -21,5 +23,3 @@ export const NAV: {
     src: '#about',
   },
 ]
-
-export const CONTENT = window.content
