@@ -7,9 +7,10 @@
 
 <ul class="services">
   {#each services as service (service.id)}
+    {@const id = `service-${service.id}`}
     <li>
-      <input type="checkbox" id={`${service.id}`} bind:group={value} name="services" value={service.id} />
-      <label for={`${service.id}`}>
+      <input type="checkbox" {id} bind:group={value} name="services" value={service.id} />
+      <label for={id}>
         <img src={service.icon} alt="" aria-hidden />
         <h3>{service.name}</h3>
       </label>
@@ -23,41 +24,39 @@
     gap: 1rem;
   }
 
-  ul li {
-    label {
-      display: flex;
-      align-items: center;
+  label {
+    display: flex;
+    align-items: center;
 
-      font-size: 1.5rem;
-      padding: 0.5em 0.5em;
-      border-radius: 5px;
-      gap: 0.5em;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    padding: 0.5em 0.5em;
+    border-radius: 5px;
+    gap: 0.5em;
 
-      color: #fff7;
-      font-weight: 500;
-      @include hover(lighten) {
-        color: #fffa;
-      }
-
-      h3 {
-        color: inherit;
-        font-size: inherit;
-        font-weight: inherit;
-        line-height: 1;
-      }
-
-      img {
-        height: 1em;
-      }
+    color: #fff7;
+    font-weight: 500;
+    @include hover(lighten) {
+      color: #fffa;
     }
 
-    // style labels when input checked
-    input:checked + label {
-      color: #fff;
+    h3 {
+      color: inherit;
+      font-size: inherit;
+      font-weight: inherit;
+      line-height: 1;
     }
 
-    input {
-      display: none;
+    img {
+      height: 1em;
     }
+  }
+
+  // style labels when input checked
+  input:checked + label {
+    color: #fff;
+  }
+
+  input {
+    display: none;
   }
 </style>

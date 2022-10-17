@@ -1,37 +1,29 @@
 <script lang="ts">
+  import { fly } from 'svelte/transition'
+  import { get } from 'svelte/store'
+
   import { CONTENT } from '../config'
 
-  import { portfolioOpen } from '../stores/portfolio'
-  import projects from '../stores/projects'
-  import services from '../stores/services'
-  import { getService } from '../stores/services'
-  import { getSkill } from '../stores/skills'
+  import { portfolioOpen, filterOptions, filterParams } from '../stores/portfolio'
 
   import ServicesFilter from '../components/portfolio/ServicesFilter.svelte'
-  import Skills from '../components/services/Skills.svelte'
-  import Tags from '../components/services/Tags.svelte'
+  import SkillsFilter from '../components/portfolio/SkillsFilter.svelte'
+  import TagsFilter from '../components/portfolio/TagsFilter.svelte'
 
   const { title, subheading, filters: filterNames } = CONTENT.sections.portfolio
 
-  let filters = {
-    services: [],
-    skills: [],
-    tags: [],
-  }
-
-  $: console.info(filters)
+  $: console.info($filterParams)
+  $: console.info($filterOptions)
 </script>
 
 {#if $portfolioOpen}
-  <section id="portfolio">
+  <section id="portfolio" transition:fly={{ x: 500, duration: 300, opacity: 0 }}>
     <h1 class="title">{title}</h1>
-    <h2 class="title">{subheading}</h2>
+    <h2 class="subheading">{subheading}</h2>
     <div class="filter-area">
-      <ServicesFilter services={$services} bind:value={filters.services} />
-      <div class="skills">
-        {#each $services as service}{/each}
-      </div>
-      <!-- <Tags /> -->
+      <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
+      <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
+      <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
     </div>
     <div class="projects" />
   </section>
