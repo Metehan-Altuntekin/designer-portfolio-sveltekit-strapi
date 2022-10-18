@@ -13,6 +13,28 @@
   text-decoration: none;
   font-family: Kanit, Montserrat, Poppins, 'Segoe UI', sans-serif;
   scroll-behavior: smooth;
+
+  /* Scrollbar for Firefox */
+  scrollbar-color: #fff7 #0006;
+  scrollbar-width: thin;
+}
+
+/* Make the scrollbar style match the rest of the modal */
+*::-webkit-scrollbar {
+  width: 7px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #0006;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #fff7;
+  border-radius: 99px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #0007;
 }
 
 html,

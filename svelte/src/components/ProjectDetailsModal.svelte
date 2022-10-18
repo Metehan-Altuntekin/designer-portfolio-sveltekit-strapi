@@ -8,7 +8,6 @@
   import { selectedProject, closeModal } from '../stores/projectDetailsModal'
   import { getService } from '../stores/services'
   import skills, { getSkill } from '../stores/skills'
-
 </script>
 
 {#if $selectedProject}
@@ -80,24 +79,6 @@
     overflow: auto;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 #0007;
-
-    // Make the scrollbar style match the rest of the modal
-    &::-webkit-scrollbar {
-      width: 7px;
-    }
-    &::-webkit-scrollbar-track {
-      background: #0006;
-    }
-    &::-webkit-scrollbar-thumb {
-      background: #fff7;
-      border-radius: 99px;
-    }
-    &::-webkit-scrollbar-thumb:hover {
-      background: #0007;
-    }
-    // Scrollbar for Firefox
-    scrollbar-color: #fff7 #0006;
-    scrollbar-width: thin;
   }
 
   .slider :global(.swiper-slide) {
