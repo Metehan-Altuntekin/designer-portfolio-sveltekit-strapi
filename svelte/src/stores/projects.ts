@@ -2,10 +2,10 @@ import type { Readable, Writable } from 'svelte/store'
 import { readable, writable, derived, get } from 'svelte/store'
 import type { Project } from '../types'
 
-import { CONTENT } from '../config'
+import content from './content'
 
 // All the projects with no order
-const projects: Readable<Project[]> = readable(CONTENT.projects)
+const projects: Readable<Project[]> = readable(get(content).projects)
 
 export default projects
 
