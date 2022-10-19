@@ -9,10 +9,12 @@
 
   export let project: Project
 
+  export let aspectRatio: number | string = 16 / 9
+
   const { id, name, thumbnail: src, relatedServices, relatedSkills, relatedTags } = project
 </script>
 
-<figure transition:fly={{ y: 100 }} on:click={() => openModal(project)}>
+<figure transition:fly={{ y: 100 }} on:click={() => openModal(project)} style={`--aspect-ratio:${aspectRatio}`}>
   <img {src} alt={name} />
   <figcaption>
     <div class="left-col">
@@ -44,7 +46,7 @@
   figure {
     display: block;
     width: 100%;
-    aspect-ratio: 1.7777777778;
+    aspect-ratio: var(--aspect-ratio);
     position: relative;
     cursor: pointer;
   }
