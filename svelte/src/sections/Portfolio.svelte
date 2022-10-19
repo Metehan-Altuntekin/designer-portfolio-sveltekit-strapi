@@ -17,16 +17,18 @@
 
 {#if $portfolioOpen}
   <section id="portfolio" transition:fly={{ x: 500, duration: 300, opacity: 0 }}>
-    <h1 class="title">{title}</h1>
-    <h2 class="subheading">{subheading}</h2>
-    <div class="filter-area">
-      <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
-      <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
-      <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
-    </div>
+    <header>
+      <h1 class="title">{title}</h1>
+      <h2 class="subheading">{subheading}</h2>
+      <div class="filter-area">
+        <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
+        <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
+        <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
+      </div>
+    </header>
     <div class="projects">
       {#each $filteredProjects as project (project.id)}
-        <Project {project} />
+        <Project {project} aspectRatio={1} />
       {/each}
     </div>
   </section>
@@ -36,19 +38,36 @@
   // portfolio section is a fullscreen modal
 
   #portfolio {
-    @include section;
+    // @include section;
+    padding: 0;
     padding-top: 10vh;
     position: fixed;
     inset: 0;
     background-color: var(--color-bg);
+    overflow-y: scroll;
+
+    // @include lg {
+    //   display: flex;
+
+    //   header {
+    //     flex: 0 0 500px;
+    //     padding-right: 5%;
+    //   }
+    //   .projects {
+    //     flex: 1;
+    //   }
+    // }
+  }
+  header {
+    @include section;
   }
 
-  #portfolio > .title {
+  .title {
     @include title;
     margin-bottom: 0.2em;
   }
 
-  #portfolio > .subheading {
+  .subheading {
     @include title;
     color: var(--color-primary);
     font-size: clamp(1rem, 3vmin, 2.5rem);
@@ -65,6 +84,5 @@
     // make a responsive grid container
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    overflow-y: auto;
   }
 </style>
