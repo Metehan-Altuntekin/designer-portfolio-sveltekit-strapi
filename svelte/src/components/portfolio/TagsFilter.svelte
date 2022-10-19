@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { scale } from 'svelte/transition'
   import type { Tag } from '../../types'
 
   export let value: string[]
@@ -8,7 +9,9 @@
 <ul class="services">
   {#each tags as tag (tag)}
     {@const id = `tag-${tag}`}
-    <li>
+    <!-- TODO: prevent other tags' jumping when tags change -->
+
+    <li transition:scale|local>
       <input type="checkbox" {id} bind:group={value} name="tags" value={tag} checked />
       <label for={id}>
         <span class="chip md">{tag}</span>
@@ -19,25 +22,15 @@
 
 <style lang="scss">
   ul {
-    --size: clamp(2rem, 5vh, 4rem);
-    display: flex;
+    @include flex(false, top, start);
     flex-wrap: wrap;
-    list-style-type: none;
-    padding: calc(var(--size) * 0.1) 0;
-  }
-
-  label {
-    display: flex;
-    align-items: center;
-
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    padding: 0.5em 0.5em;
-    border-radius: 5px;
+    gap: 0.5rem;
+    margin: 1rem 0;
   }
 
   // style labels when input checked
   input:checked + label > span {
-    filter: brightness(1);
+    background-color: #fff8;
   }
 
   input {
