@@ -11,7 +11,7 @@
     <h1>{copyright} <sup>ⓒ</sup></h1>
     <h2>{disclaimer}</h2>
   </div>
-  <a href="/assets/privacy-policy" title="Just kidding :D" class="privacy-policy">{privacyPolicy}</a>
+  <a href="#" title="Just kidding :D" class="privacy-policy">{privacyPolicy}</a>
 </footer>
 
 <style lang="scss">

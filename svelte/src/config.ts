@@ -1,6 +1,7 @@
 import { openPortfolio } from './stores/portfolio'
+import content from '$lib/content'
 
-export const CONTENT = window.content
+export const CONTENT = content
 
 export const NAV: {
   name: string

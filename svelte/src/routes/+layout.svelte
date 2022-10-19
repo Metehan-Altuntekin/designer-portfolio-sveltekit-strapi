@@ -1,4 +1,5 @@
 <script lang="ts">
+  // import '../style/global.css'
   import Header from '../sections/Header.svelte'
   import Footer from '../sections/Footer.svelte'
 
