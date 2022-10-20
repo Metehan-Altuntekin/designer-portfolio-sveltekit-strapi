@@ -1,5 +1,5 @@
 import sveltePreprocess from 'svelte-preprocess'
-import adapter from '@sveltejs/adapter-auto'
+import adapter from '@sveltejs/adapter-static'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
@@ -16,6 +16,10 @@ export default {
   }),
 
   kit: {
-    adapter: adapter(),
+    adapter: adapter({
+      pages: 'build',
+      assets: 'build',
+      fallback: null,
+    }),
   },
 }
