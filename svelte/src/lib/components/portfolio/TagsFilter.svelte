@@ -1,6 +1,6 @@
 <script lang="ts">
   import { scale } from 'svelte/transition'
-  import type { Tag } from '../../../types'
+  import type { Tag } from '$lib/types'
 
   export let value: string[]
   export let tags: Tag[]

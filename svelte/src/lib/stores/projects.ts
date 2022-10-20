@@ -1,6 +1,6 @@
 import type { Readable, Writable } from 'svelte/store'
 import { readable, writable, derived, get } from 'svelte/store'
-import type { Project } from '../types'
+import type { Project } from '$lib/types'
 
 import content from './content'
 

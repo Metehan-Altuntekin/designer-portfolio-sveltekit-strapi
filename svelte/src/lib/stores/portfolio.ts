@@ -1,4 +1,4 @@
-import type { Service, Skill, Tag, Project } from '../types'
+import type { Service, Skill, Tag, Project } from '$lib/types'
 import type { Writable, Readable } from 'svelte/store'
 import { writable, derived, get } from 'svelte/store'
 

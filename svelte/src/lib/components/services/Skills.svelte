@@ -2,7 +2,7 @@
   export let serviceId: number
   export let skillIds: number[]
 
-  import type { Skill } from '../../../types'
+  import type { Skill } from '$lib/types'
   import skills from '$lib/stores/skills'
   import { filterParams, toggleFilterParams } from '$lib/stores/projects'
 

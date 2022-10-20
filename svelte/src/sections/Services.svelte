@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Service as TypeService } from '../types'
+  import type { Service as TypeService } from '$lib/types'
   import services from '$lib/stores/services'
 
   import Service from '$lib/components/services/Service.svelte'

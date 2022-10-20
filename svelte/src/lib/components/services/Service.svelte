@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Service } from '../../../types'
+  import type { Service } from '$lib/types'
   export let service: Service
 
   const { id, name, icon, textPrimary, textSecondary, relatedSkills, relatedTags }: Service = service

@@ -1,6 +1,6 @@
 import type { Readable } from 'svelte/store'
 import { readable, get } from 'svelte/store'
-import type { Service } from '../types'
+import type { Service } from '$lib/types'
 
 import content from './content'
 

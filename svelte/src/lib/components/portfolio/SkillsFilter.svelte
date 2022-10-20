@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Skill } from '../../../types'
+  import type { Skill } from '$lib/types'
 
   export let value: number[]
   export let skills: Skill[]

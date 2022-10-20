@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
   // types
-  import type { Project } from '../../../types'
+  import type { Project } from '$lib/types'
   // stores
   import services from '$lib/stores/services'
   import skills from '$lib/stores/skills'
