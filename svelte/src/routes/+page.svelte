@@ -1,12 +1,12 @@
 <script lang="ts">
   // Sections
-  import Hero from '../sections/Hero.svelte'
-  import Services from '../sections/Services.svelte'
-  import About from '../sections/About.svelte'
-  import Contact from '../sections/Contact.svelte'
-  import Friends from '../sections/Friends.svelte'
+  import Hero from './Hero.svelte'
+  import Services from './Services.svelte'
+  import About from './About.svelte'
+  import Contact from './Contact.svelte'
+  import Friends from './Friends.svelte'
 
-  import Portfolio from '../sections/Portfolio.svelte'
+  import Portfolio from './Portfolio.svelte'
 </script>
 
 <Hero />

@@ -1,7 +1,7 @@
 <script lang="ts">
   // import '../style/global.css'
-  import Header from '../sections/Header.svelte'
-  import Footer from '../sections/Footer.svelte'
+  import Header from './Header.svelte'
+  import Footer from './Footer.svelte'
 
   import ProjectDetailsModal from '$lib/components/ProjectDetailsModal.svelte'
 </script>
