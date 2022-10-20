@@ -3,9 +3,9 @@
   // types
   import type { Project } from '../../../types'
   // stores
-  import services from '../../../stores/services'
-  import skills from '../../../stores/skills'
-  import { openModal } from '../../../stores/projectDetailsModal'
+  import services from '$lib/stores/services'
+  import skills from '$lib/stores/skills'
+  import { openModal } from '$lib/stores/projectDetailsModal'
 
   export let project: Project
 

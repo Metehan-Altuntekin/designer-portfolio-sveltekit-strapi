@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Tag } from '../../../types'
-  import { filterParams, toggleFilterParams } from '../../../stores/projects'
+  import { filterParams, toggleFilterParams } from '$lib/stores/projects'
 
   export let serviceId: number
   export let tags: Tag[]

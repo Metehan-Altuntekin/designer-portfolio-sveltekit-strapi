@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { openPortfolio } from "../stores/portfolio";
+  import { openPortfolio } from '$lib/stores/portfolio'
 </script>
 
 <section id="hero">

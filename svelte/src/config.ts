@@ -1,4 +1,4 @@
-import { openPortfolio } from './stores/portfolio'
+import { openPortfolio } from '$lib/stores/portfolio'
 import content from '$lib/content'
 
 export const CONTENT = content

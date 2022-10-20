@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Service as TypeService } from '../types'
-  import services from '../stores/services'
+  import services from '$lib/stores/services'
 
   import Service from '$lib/components/services/Service.svelte'
   import { onMount } from 'svelte'

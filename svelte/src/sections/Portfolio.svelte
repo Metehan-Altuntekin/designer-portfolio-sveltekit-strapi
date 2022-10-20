@@ -4,7 +4,7 @@
 
   import { CONTENT } from '../config'
 
-  import { portfolioOpen, filterOptions, filterParams, filteredProjects } from '../stores/portfolio'
+  import { portfolioOpen, filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
 
   import ServicesFilter from '$lib/components/portfolio/ServicesFilter.svelte'
   import SkillsFilter from '$lib/components/portfolio/SkillsFilter.svelte'

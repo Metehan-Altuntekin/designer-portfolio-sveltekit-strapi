@@ -5,9 +5,9 @@
   import { Swiper, SwiperSlide } from 'swiper/svelte'
   import { Pagination, Autoplay } from 'swiper'
 
-  import { selectedProject, closeModal } from '../../stores/projectDetailsModal'
-  import { getService } from '../../stores/services'
-  import skills, { getSkill } from '../../stores/skills'
+  import { selectedProject, closeModal } from '$lib/stores/projectDetailsModal'
+  import { getService } from '$lib/stores/services'
+  import skills, { getSkill } from '$lib/stores/skills'
 </script>
 
 {#if $selectedProject}
