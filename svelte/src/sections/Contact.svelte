@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CONTENT } from '../config'
+  import { CONTENT } from '$lib/config'
 
   const {
     heading,

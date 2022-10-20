@@ -2,7 +2,7 @@
   import { fly } from 'svelte/transition'
   import { get } from 'svelte/store'
 
-  import { CONTENT } from '../config'
+  import { CONTENT } from '$lib/config'
 
   import { portfolioOpen, filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
 

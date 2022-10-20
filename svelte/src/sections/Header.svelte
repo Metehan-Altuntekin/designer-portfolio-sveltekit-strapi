@@ -2,7 +2,7 @@
   import Icon from '@iconify/svelte'
   import { fly, fade } from 'svelte/transition'
 
-  import { NAV } from '../config'
+  import { NAV } from '$lib/config'
 
   let mobileNav = false
   let mobileNavStep2 = false
