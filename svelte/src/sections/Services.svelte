@@ -2,7 +2,7 @@
   import type { Service as TypeService } from '../types'
   import services from '../stores/services'
 
-  import Service from '../components/services/Service.svelte'
+  import Service from '$lib/components/services/Service.svelte'
   import { onMount } from 'svelte'
 </script>
 

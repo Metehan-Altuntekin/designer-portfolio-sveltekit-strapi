@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Friend } from '../../types'
+  import type { Friend } from '../../../types'
 
   export let friend: Friend
 

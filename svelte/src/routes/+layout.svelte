@@ -3,7 +3,7 @@
   import Header from '../sections/Header.svelte'
   import Footer from '../sections/Footer.svelte'
 
-  import ProjectDetailsModal from '../components/ProjectDetailsModal.svelte'
+  import ProjectDetailsModal from '$lib/components/ProjectDetailsModal.svelte'
 </script>
 
 <Header />

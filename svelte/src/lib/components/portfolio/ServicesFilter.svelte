@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Service } from '../../types'
+  import type { Service } from '../../../types'
 
   export let value: number[]
   export let services: Service[]

@@ -6,11 +6,11 @@
 
   import { portfolioOpen, filterOptions, filterParams, filteredProjects } from '../stores/portfolio'
 
-  import ServicesFilter from '../components/portfolio/ServicesFilter.svelte'
-  import SkillsFilter from '../components/portfolio/SkillsFilter.svelte'
-  import TagsFilter from '../components/portfolio/TagsFilter.svelte'
+  import ServicesFilter from '$lib/components/portfolio/ServicesFilter.svelte'
+  import SkillsFilter from '$lib/components/portfolio/SkillsFilter.svelte'
+  import TagsFilter from '$lib/components/portfolio/TagsFilter.svelte'
 
-  import Project from '../components/services/Project.svelte'
+  import Project from '$lib/components/services/Project.svelte'
 
   const { title, subheading, filters: filterNames } = CONTENT.sections.portfolio
 </script>

@@ -3,7 +3,7 @@
 
   const { heading, subheading, friendsList: friends } = CONTENT.sections.friends
 
-  import Friend from '../components/friends/Friend.svelte'
+  import Friend from '$lib/components/friends/Friend.svelte'
 </script>
 
 <section id="friends">

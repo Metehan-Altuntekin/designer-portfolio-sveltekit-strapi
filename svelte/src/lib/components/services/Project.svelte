@@ -1,11 +1,11 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
   // types
-  import type { Project } from '../../types'
+  import type { Project } from '../../../types'
   // stores
-  import services from '../../stores/services'
-  import skills from '../../stores/skills'
-  import { openModal } from '../../stores/projectDetailsModal'
+  import services from '../../../stores/services'
+  import skills from '../../../stores/skills'
+  import { openModal } from '../../../stores/projectDetailsModal'
 
   export let project: Project
 

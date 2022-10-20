@@ -2,9 +2,9 @@
   export let serviceId: number
   export let skillIds: number[]
 
-  import type { Skill } from '../../types'
-  import skills from '../../stores/skills'
-  import { filterParams, toggleFilterParams } from '../../stores/projects'
+  import type { Skill } from '../../../types'
+  import skills from '../../../stores/skills'
+  import { filterParams, toggleFilterParams } from '../../../stores/projects'
 
   function handleSkillSelection(skill: Skill) {
     toggleFilterParams(serviceId, 'skills', skill.id)

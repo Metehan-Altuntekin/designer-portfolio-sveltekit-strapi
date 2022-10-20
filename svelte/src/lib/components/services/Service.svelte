@@ -1,5 +1,5 @@
 <script lang="ts">
-  import type { Service } from '../../types'
+  import type { Service } from '../../../types'
   export let service: Service
 
   const { id, name, icon, textPrimary, textSecondary, relatedSkills, relatedTags }: Service = service
@@ -8,7 +8,7 @@
   import Tags from './Tags.svelte'
   import Project from './Project.svelte'
 
-  import { filteredProjects } from '../../stores/projects'
+  import { filteredProjects } from '../../../stores/projects'
 
   $: projects = $filteredProjects[id]
 </script>

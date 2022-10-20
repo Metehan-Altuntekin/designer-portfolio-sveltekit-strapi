@@ -7,7 +7,7 @@
     info: { location, email, phone, socialMedia },
   } = CONTENT.sections.contact
 
-  import ContactForm from '../components/contact/ContactForm.svelte'
+  import ContactForm from '$lib/components/contact/ContactForm.svelte'
 </script>
 
 <section id="contact">
