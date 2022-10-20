@@ -4,7 +4,7 @@
 
   import { CONTENT } from '$lib/config'
 
-  import { portfolioOpen, filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
+  import { filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
 
   import ServicesFilter from '$lib/components/portfolio/ServicesFilter.svelte'
   import SkillsFilter from '$lib/components/portfolio/SkillsFilter.svelte'
@@ -15,24 +15,22 @@
   const { title, subheading, filters: filterNames } = CONTENT.sections.portfolio
 </script>
 
-{#if $portfolioOpen}
-  <section id="portfolio" transition:fly={{ x: 500, duration: 300, opacity: 0 }}>
-    <header>
-      <h1 class="title">{title}</h1>
-      <h2 class="subheading">{subheading}</h2>
-      <div class="filter-area">
-        <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
-        <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
-        <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
-      </div>
-    </header>
-    <div class="projects">
-      {#each $filteredProjects as project (project.id)}
-        <Project {project} aspectRatio={1} />
-      {/each}
+<section id="portfolio" transition:fly={{ x: 500, duration: 300, opacity: 0 }}>
+  <header>
+    <h1 class="title">{title}</h1>
+    <h2 class="subheading">{subheading}</h2>
+    <div class="filter-area">
+      <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
+      <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
+      <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
     </div>
-  </section>
-{/if}
+  </header>
+  <div class="projects">
+    {#each $filteredProjects as project (project.id)}
+      <Project {project} aspectRatio={1} />
+    {/each}
+  </div>
+</section>
 
 <style lang="scss">
   // portfolio section is a fullscreen modal
@@ -41,10 +39,7 @@
     // @include section;
     padding: 0;
     padding-top: 10vh;
-    position: fixed;
-    inset: 0;
     background-color: var(--color-bg);
-    overflow-y: scroll;
 
     // @include lg {
     //   display: flex;

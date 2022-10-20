@@ -9,7 +9,7 @@
 </script>
 
 <header id="header">
-  <a href="#hero" class="logo">
+  <a href="/" class="logo">
     <img src="./assets/logo.png" alt="Logo" />
     <span>Hüsnü Mahmudizer</span>
   </a>

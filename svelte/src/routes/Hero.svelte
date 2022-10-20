@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { openPortfolio } from '$lib/stores/portfolio'
 </script>
 
 <section id="hero">
@@ -7,7 +6,7 @@
   <p>This portfolio site project made with PHP & Svelte! It runs on Apache server and doesn't require Node.js!</p>
   <div class="CTAs">
     <a class="button lg" href="#services">Services</a>
-    <a class="button secondary lg" href="#portfolio" on:click={openPortfolio}>Portfolio</a>
+    <a class="button secondary lg" href="/portfolio">Portfolio</a>
   </div>
   <div class="image"><img src="./assets/hero-image.png" alt="Figure" /></div>
 </section>

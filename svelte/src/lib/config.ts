@@ -1,4 +1,3 @@
-import { openPortfolio } from '$lib/stores/portfolio'
 import content from '$lib/content'
 
 export const CONTENT = content
@@ -10,8 +9,8 @@ export const NAV: {
 }[] = [
   {
     name: 'Portfolio',
-    onClick: openPortfolio,
-    src: '#portfolio',
+    onClick: undefined,
+    src: '/portfolio',
   },
   {
     name: 'Services',
