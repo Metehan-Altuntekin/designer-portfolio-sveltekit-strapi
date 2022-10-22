@@ -28,13 +28,13 @@
     </div>
     <div class="right-col">
       <div class="skills">
-        {#each relatedSkills as skillId}
+        {#each relatedSkills.slice(0, 2) as skillId}
           {@const skill = $skills.find((e) => e.id === skillId)}
           <img src={skill.icon} alt={skill.name} title={skill.name} />
         {/each}
       </div>
       <div class="tags">
-        {#each relatedTags as tag}
+        {#each relatedTags.slice(0, 2) as tag}
           <span class="chip">{tag}</span>
         {/each}
       </div>
