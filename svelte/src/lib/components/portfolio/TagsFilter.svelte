@@ -14,7 +14,7 @@
     <li transition:scale|local>
       <input type="checkbox" {id} bind:group={value} name="tags" value={tag} checked />
       <label for={id}>
-        <span class="chip md">{tag}</span>
+        <span class="chip">{tag}</span>
       </label>
     </li>
   {/each}

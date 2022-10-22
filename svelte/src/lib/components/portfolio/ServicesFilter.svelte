@@ -20,23 +20,31 @@
 
 <style lang="scss">
   ul {
+    --size: clamp(1rem, 2.5vw, 1.5rem);
     display: flex;
-    gap: 1rem;
+    gap: calc(var(--size) / 2);
+    flex-wrap: wrap;
+    // grid-template-columns: repeat(auto-fit, 1fr);
+    align-items: center;
+    justify-content: flex-start;
+    flex-grow: 0;
   }
 
   label {
     display: flex;
     align-items: center;
 
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    padding: 0.5em 0.5em;
-    border-radius: 5px;
-    gap: 0.5em;
+    font-size: var(--size);
+    gap: 0.25em;
 
-    color: #fff7;
+    color: #fff;
     font-weight: 500;
-    @include hover(lighten) {
-      color: #fffa;
+
+    transition: 0.3s;
+    filter: brightness(0.7);
+
+    &:hover {
+      filter: brightness(0.9);
     }
 
     h3 {
@@ -44,16 +52,17 @@
       font-size: inherit;
       font-weight: inherit;
       line-height: 1;
+      white-space: nowrap;
     }
 
     img {
-      height: 1em;
+      height: 1.2em;
     }
   }
 
   // style labels when input checked
   input:checked + label {
-    color: #fff;
+    filter: brightness(1);
   }
 
   input {

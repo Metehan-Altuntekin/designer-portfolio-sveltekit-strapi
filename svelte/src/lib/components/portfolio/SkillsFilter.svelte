@@ -19,20 +19,16 @@
 
 <style lang="scss">
   ul {
-    --size: clamp(2rem, 5vh, 4rem);
+    --size: clamp(2rem, 3vw, 3rem);
     display: flex;
     flex-wrap: wrap;
-    list-style-type: none;
+    gap: 10px;
     padding: calc(var(--size) * 0.1) 0;
   }
 
   label {
     display: flex;
     align-items: center;
-
-    font-size: clamp(1.1rem, 3vw, 1.6rem);
-    padding: 0.5em 0.5em;
-    border-radius: 5px;
   }
 
   img {
