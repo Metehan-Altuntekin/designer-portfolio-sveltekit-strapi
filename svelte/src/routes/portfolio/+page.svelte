@@ -39,21 +39,6 @@
       </figure>
     {/each}
   </div>
-  <!-- {#if displayMobileFilter}
-    <div class="mobile-filter-modal" transition:fly={{ y: 100 }}>
-      <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
-      <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
-      <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
-      <div class="buttons">
-        <button class="button sm" on:click={toggleFilterModal}>Close</button>
-        <button class="button secondary sm">Reset</button>
-      </div>
-    </div>
-  {/if}
-  <nav class="mobile-nav">
-    <button class="button sm" on:click={toggleFilterModal}>Filters</button>
-    <button class="button secondary sm">Back</button>
-  </nav> -->
 </section>
 
 <style lang="scss">
@@ -155,9 +140,9 @@
     @include sm {
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     }
-    @include md {
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
+    // @include md {
+    //   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    // }
     @include lg {
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
@@ -184,56 +169,6 @@
       &:hover {
         filter: brightness(1);
       }
-    }
-  }
-
-  // filter area should be a modal in mobile devices
-
-  // hide the filter area on mobile devices
-  section > header > .filter-area {
-    display: none;
-    @include mobile-breakpoint() {
-      display: flex;
-    }
-  }
-
-  // mobile filter area is a modal
-  section > .mobile-filter-modal {
-    position: fixed;
-    z-index: 9999;
-    inset: auto;
-    margin: $page-padding;
-
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    justify-content: start;
-    padding: 24px;
-    gap: 16px;
-
-    border-radius: 20px;
-
-    background-color: #0005;
-    backdrop-filter: blur(40px);
-
-    .buttons {
-      display: flex;
-      gap: 1rem;
-    }
-  }
-  section > .mobile-nav {
-    position: fixed;
-    z-index: 999;
-    inset: auto 0 0 0;
-    display: flex;
-    background-color: var(--color-bg);
-    justify-content: center;
-    gap: 1.5em;
-    padding: 1.5em;
-    filter: drop-shadow(0 0 1em #000a);
-
-    @include mobile-breakpoint {
-      display: none;
     }
   }
 </style>
