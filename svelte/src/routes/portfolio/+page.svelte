@@ -50,6 +50,7 @@
 
   section {
     --gap: 50px;
+    --page-padding-top: 15vh;
     display: grid;
     grid-auto-flow: row;
     align-items: start;
@@ -58,7 +59,7 @@
     // remove padding from global section styling
     padding: 0;
     // add margin to top to prevent header overflow
-    margin-top: 15vh;
+    margin-top: var(--page-padding-top);
     padding-bottom: 10vh;
 
     @include mobile-breakpoint {
@@ -77,6 +78,9 @@
     align-items: start;
     justify-content: start;
     gap: var(--gap);
+
+    max-height: calc(100vh - var(--page-padding-top));
+    padding-bottom: var(--gap);
 
     @include mobile-breakpoint() {
       padding: 0;
@@ -123,10 +127,18 @@
     gap: 24px;
 
     border-radius: 24px;
-
     background-color: #0005;
     backdrop-filter: blur(40px);
 
+    flex-basis: 100%;
+    flex-grow: 1;
+    overflow-y: auto;
+
+    // disable visibility in mobile view
+    display: none;
+    @include mobile-breakpoint {
+      display: flex;
+    }
     @include lg {
       padding: 40px;
     }
