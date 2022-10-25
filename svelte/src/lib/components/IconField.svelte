@@ -3,24 +3,34 @@
 
   export let icon: string = ''
   export let label: string
+
   export let value: string = ''
+  export let required: boolean = false
+  export let error: string | undefined = undefined
+
   export let textarea: boolean = false
   export let rows: number = 5
 </script>
 
-<div title={label}>
-  {#if textarea}
-    <textarea cols="30" {rows} bind:value placeholder={label} />
-  {:else}
-    <div class="icon">
-      <Icon {icon} />
-    </div>
-    <input type="text" placeholder={label} bind:value />
+<div class="container">
+  <div class="field" title={label}>
+    {#if textarea}
+      <!-- Textarea doesn't have icon -->
+      <textarea cols="30" {rows} bind:value placeholder={label} class:error />
+    {:else}
+      <div class="icon">
+        <Icon {icon} />
+      </div>
+      <input type="text" placeholder={label} bind:value class:error />
+    {/if}
+  </div>
+  {#if error}
+    <div class="error-helper">{error}</div>
   {/if}
 </div>
 
 <style lang="scss">
-  div {
+  .field {
     --text-color: #fff;
     --icon-color: #57a;
     --bg-color: #234;
@@ -39,7 +49,7 @@
     overflow: clip;
     position: relative;
   }
-  div > * {
+  .field > * {
     font-size: inherit;
     background-color: inherit;
   }
@@ -76,5 +86,19 @@
 
   textarea {
     resize: vertical;
+  }
+
+  input.error,
+  textarea.error {
+    border: 2px solid #f00;
+  }
+
+  .error-helper {
+    color: #f26;
+    font-weight: 400;
+    font-family: Poppins, Kanit, Segoe UI, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 0.5em 1em 0 1em;
   }
 </style>
