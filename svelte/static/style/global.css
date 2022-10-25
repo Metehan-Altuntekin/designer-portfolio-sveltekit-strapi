@@ -1,7 +1,7 @@
 :root {
   --color-primary: #3759ff;
   --color-bg: #182128;
-
+  --error-color: #f36;
 }
 
 * {
