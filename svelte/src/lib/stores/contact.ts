@@ -5,8 +5,20 @@ import type { AxiosProgressEvent } from 'axios'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
+// const TEL_REGEX = /^(?:\+\d{1,3}|0\d{1,3}|00\d{1,2})?(?:\s?\(\d+\))?(?:[-\s.]|\d)+$/
+
+// regex to match phone numbers in the formats:
+// +1 (555) 555-5555
+// 555-555-5555
+// 5555555555
+// 555 555 5555
+// (555)555-5555
+// 1-555-555-5555
+// 555 55 55
+
 const TEL_REGEX = /^(?:\+\d{1,3}|0\d{1,3}|00\d{1,2})?(?:\s?\(\d+\))?(?:[-\s.]|\d)+$/
-const FILES_TOTAL_MAX_SIZE = 1000 * 1000 * 10 // 10MB
+
+export const FILES_TOTAL_MAX_SIZE = 1000 * 1000 * 100 // 100MB
 
 // Validation schema
 export const schema = zod.object({
@@ -68,8 +80,6 @@ export const progress: Writable<number> = writable(0)
 // Send contact form data to the server
 // includes big file so we need to track progress
 export async function sendMessage(message: Schema) {
-  progress.set(0)
-
   // Validate data
   await validate(message)
 
@@ -93,5 +103,6 @@ export async function sendMessage(message: Schema) {
   }
 
   const response = await axios.post('/api/contact', formData, config)
+  progress.set(0)
   return response.data
 }
