@@ -5,7 +5,7 @@ import type { AxiosProgressEvent } from 'axios'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
-// const TEL_REGEX = /^(?:\+\d{1,3}|0\d{1,3}|00\d{1,2})?(?:\s?\(\d+\))?(?:[-\s.]|\d)+$/
+import { createNotification, deleteNotification } from '$lib/stores/notification'
 
 // regex to match phone numbers in the formats:
 // +1 (555) 555-5555
@@ -15,9 +15,7 @@ import { writable } from 'svelte/store'
 // (555)555-5555
 // 1-555-555-5555
 // 555 55 55
-
 const TEL_REGEX = /^(?:\+\d{1,3}|0\d{1,3}|00\d{1,2})?(?:\s?\(\d+\))?(?:[-\s.]|\d)+$/
-
 export const FILES_TOTAL_MAX_SIZE = 1000 * 1000 * 100 // 100MB
 
 // Validation schema
@@ -75,13 +73,25 @@ async function validate<T extends Schema>(data: T) {
 // --------------------------------------------
 
 // track progress of file uploads
-export const progress: Writable<number> = writable(0)
+export const progressStore: Writable<number> = writable(0)
+
+export const pending = writable(false)
 
 // Send contact form data to the server
 // includes big file so we need to track progress
 export async function sendMessage(message: Schema) {
   // Validate data
   await validate(message)
+
+  progressStore.set(0)
+  pending.set(true)
+
+  // set notification to show progress bar
+  const progressNotification = createNotification({
+    title: 'Sending message...',
+    type: 'info',
+    progressStore,
+  })
 
   // Prepare data
   const formData = new FormData()
@@ -91,18 +101,49 @@ export async function sendMessage(message: Schema) {
   formData.append('message', message.message)
   if (message.files) message.files.forEach((file) => formData.append('files', file))
 
-  // Create request
-  const config = {
-    onUploadProgress: function (progressEvent: AxiosProgressEvent) {
-      if (progressEvent.total) {
-        progress.set(Math.round((progressEvent.loaded * 100) / progressEvent.total))
-      } else {
-        progress.set(Math.round(progressEvent.loaded / 1024))
-      }
-    },
-  }
+  try {
+    // Create request
+    const config = {
+      onUploadProgress: function (progressEvent: AxiosProgressEvent) {
+        if (progressEvent.total) {
+          progressStore.set(Math.round(progressEvent.loaded / progressEvent.total))
+        }
+      },
+    }
 
-  const response = await axios.post('/api/contact', formData, config)
-  progress.set(0)
-  return response.data
+    const response = await axios.post('/api/contact', formData, config)
+
+    progressStore.set(1)
+    pending.set(false)
+
+    if (response.status === 200) {
+      // show success notification
+      deleteNotification(progressNotification.id)
+      createNotification({
+        title: 'Message sent!',
+        type: 'success',
+      })
+    } else {
+      // show error notification
+      deleteNotification(progressNotification.id)
+      createNotification({
+        title: 'Error sending message',
+        message: response.data.message,
+        type: 'error',
+      })
+    }
+  } catch (error) {
+    progressStore.set(0)
+    pending.set(false)
+
+    // delete notification
+    deleteNotification(progressNotification.id)
+    // show error notification
+    createNotification({
+      title: 'Error sending message',
+      type: 'error',
+    })
+
+    throw error
+  }
 }

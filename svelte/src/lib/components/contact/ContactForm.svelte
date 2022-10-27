@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { progress, sendMessage, schema, errors, FILES_TOTAL_MAX_SIZE } from '$lib/stores/contact'
+  import { progressStore, pending, sendMessage, schema, errors, FILES_TOTAL_MAX_SIZE } from '$lib/stores/contact'
   import type { Schema } from '$lib/stores/contact'
 
   import IconField from '../IconField.svelte'
@@ -36,9 +36,7 @@
   <IconField bind:value={value.tel} label="Telephone - optional" icon="ic:round-phone" error={$errors.tel} />
   <IconField bind:value={value.message} label="Your Message" textarea rows={5} error={$errors.message} required />
   <FileUpload bind:value={value.files} error={$errors.files} MAX_FILES={5} MAX_TOTAL_SIZE={FILES_TOTAL_MAX_SIZE} />
-  <button type="submit" class="button sm" class:processing={$progress !== 0} disabled={$progress !== 0}
-    >Send Message</button
-  >
+  <button type="submit" class="button sm" class:processing={$pending} disabled={$pending}>Send Message</button>
 </form>
 
 <style lang="scss">
@@ -78,6 +76,7 @@
       border: 3px solid #fff7;
       border-top-color: #fff;
       animation: spinner 0.6s linear infinite;
+      transition: 1s;
     }
   }
 
