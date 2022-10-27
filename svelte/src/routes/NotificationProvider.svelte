@@ -1,16 +1,11 @@
 <script lang="ts">
-  import {
-    type Notification as NotificationType,
-    notifications,
-    createNotification,
-    deleteNotification,
-  } from '$lib/stores/notification'
+  import { notifications } from '$lib/stores/notification'
 
   import Notification from '$lib/components/Notification.svelte'
 </script>
 
 <div class="notification-provider">
-  {#each $notifications as notification (notification)}
+  {#each $notifications as notification (notification.id)}
     <Notification {notification} />
   {/each}
 </div>
