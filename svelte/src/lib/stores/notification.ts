@@ -4,12 +4,13 @@ import { writable } from 'svelte/store'
 import uniqid from 'uniqid'
 
 const DISPLAY_DURATION = 5000
+const PROGRESS_DISPLAY_DURATION_AFTER_COMPLETE = 2000
 
 export interface Notification {
   id: string
   title: string
   message?: string
-  type: 'success' | 'error' | 'info'
+  type: 'success' | 'error' | 'info' | 'warning'
 
   progressStore?: Writable<number> | Readable<number> // optional progress store to show a progress bar
   progress?: number // optional progress value to show a progress bar
@@ -61,7 +62,7 @@ export function createNotification(properties: Omit<Notification, 'id'> & { dura
           notifications.update((notifications) => {
             return notifications.filter((n) => n !== notification)
           })
-        }, properties.duration ?? 2000)
+        }, properties.duration ?? PROGRESS_DISPLAY_DURATION_AFTER_COMPLETE)
       }
     })
   }
