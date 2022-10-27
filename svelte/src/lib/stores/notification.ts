@@ -66,6 +66,8 @@ export function createNotification(properties: Omit<Notification, 'id'> & { dura
       }
     })
   }
+
+  return notification
 }
 
 export function deleteNotification(notificationId: string) {
