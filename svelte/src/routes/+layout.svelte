@@ -1,9 +1,9 @@
 <script lang="ts">
-  // import '../style/global.css'
   import Header from './Header.svelte'
   import Footer from './Footer.svelte'
 
   import ProjectDetailsModal from '$lib/components/ProjectDetailsModal.svelte'
+  import NotificationProvider from './NotificationProvider.svelte'
 </script>
 
 <Header />
@@ -12,6 +12,7 @@
 </main>
 <Footer />
 <ProjectDetailsModal />
+<NotificationProvider />
 
 <style lang="scss">
   main > :global(section) {
