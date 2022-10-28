@@ -16,5 +16,6 @@ module.exports = {
     'linebreak-style': 'off',
     quotes: 'off',
     semi: 'off',
+    '@typescript-eslint/no-namespace': 'off',
   },
 }

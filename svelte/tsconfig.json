@@ -17,7 +17,8 @@
     "isolatedModules": true,
     "lib": ["ES2021.String", "dom"],
     "strictNullChecks": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "importsNotUsedAsValues": "preserve"
   },
   // Path aliases are handled by https://kit.svelte.dev/docs/configuration#alias
   //
