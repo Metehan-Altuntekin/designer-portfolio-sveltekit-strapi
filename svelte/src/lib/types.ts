@@ -1,40 +1,30 @@
-export type Service = {
-  id: number
-  name: string
-  icon: string
+import * as schemas from '$lib/schemas'
 
-  textPrimary: string
-  textSecondary: string
+export type Service = schemas.service
 
-  relatedSkills?: number[]
-  relatedTags?: string[]
+export type Skill = schemas.skill
+
+export type Tag = schemas.tag
+
+export type Project = schemas.project
+
+export type Friend = schemas.friend
+
+//
+
+export type Owner = schemas.owner
+
+export namespace Sections {
+  export type Header = schemas.sections.header
+  export type Hero = schemas.sections.hero
+  export type Services = schemas.sections.services
+  export type Portfolio = schemas.sections.portfolio
+  export type About = schemas.sections.about
+  export type Contact = schemas.sections.contact
+  export type Friends = schemas.sections.friends
+  export type Footer = schemas.sections.footer
 }
 
-export type Skill = {
-  id: number
-  name: string
-  icon: string
-  largeIcon: string
-}
+//
 
-export type Tag = string
-
-export type Project = {
-  id: number
-  name: string
-  thumbnail: string
-  images: string[]
-  videos: string[]
-  description: string
-
-  relatedServices: number[]
-  relatedSkills: number[]
-  relatedTags: string[]
-}
-
-export type Friend = {
-  name: string
-  image: string
-  roles: string[]
-  link: string
-}
+export type Content = schemas.content
