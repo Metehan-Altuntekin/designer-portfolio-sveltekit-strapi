@@ -1,4 +1,6 @@
-const content = {
+import type { Content } from '$lib/types'
+
+const content: Content = {
   owner: {
     name: 'Hüsnüye',
     surname: 'Hüsnoğlu',
@@ -733,6 +735,44 @@ const content = {
   ],
 
   sections: {
+    header: {
+      nav: {
+        home: 'Home',
+        portfolio: 'Portfolio',
+        services: 'Services',
+        about: 'About',
+        contact: 'Contact',
+      },
+    },
+
+    hero: {
+      heading: 'We are a creative studio',
+      subheading: 'We are a creative studio specializing in high-end 3D visualization',
+      actions: {
+        services: 'Our Services',
+        portfolio: 'Our Portfolio',
+      },
+    },
+
+    services: {
+      title: 'Services',
+      actions: {
+        getAnOffer: 'Get an offer',
+        portfolio: 'Portfolio',
+        cleanFilters: 'Clean filters',
+      },
+    },
+
+    portfolio: {
+      title: 'Portfolio', // Portfolio
+      subheading: 'My latest works and projects',
+      filters: {
+        service: 'Service',
+        tags: 'Tags',
+        skills: 'Skills',
+      },
+    },
+
     about: {
       title: 'About Me',
       heading: '3D Modeling Has Never Been So Good',
@@ -795,6 +835,7 @@ const content = {
     },
 
     friends: {
+      title: 'Friends',
       heading: 'My Friends',
       subheading: 'Developers & designers you can discover',
       friendsList: [
@@ -823,16 +864,6 @@ const content = {
           link: 'https://youtube.com',
         },
       ],
-    },
-
-    portfolio: {
-      title: 'Portfolio', // Portfolio
-      subheading: 'My latest works and projects',
-      filters: {
-        $service: 'Service',
-        $tags: 'Tags',
-        $skills: 'Skills',
-      },
     },
 
     footer: {
