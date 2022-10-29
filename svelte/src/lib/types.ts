@@ -28,3 +28,6 @@ export namespace Sections {
 //
 
 export type Content = schemas.content
+
+export type StaticContent = schemas.staticContent
+export type DynamicContent = schemas.dynamicContent
