@@ -210,3 +210,80 @@ export const content = zod.object({
 })
 
 export type content = zod.infer<typeof content>
+
+// ---------------------------------------------------------------------------
+
+// * Schemas for static content
+// The content that stored in locales
+export const staticContent = zod.object({
+  sections: zod.object({
+    header: sections.header,
+    hero: zod.object({
+      actions: zod.object({
+        services: sections.hero.shape.actions.shape.services,
+        portfolio: sections.hero.shape.actions.shape.portfolio,
+      }),
+    }),
+    services: sections.services,
+    portfolio: sections.portfolio.omit({ subheading: true }),
+    about: sections.about.pick({ title: true }),
+    contact: zod.object({
+      title: sections.contact.shape.title,
+      availability: sections.contact.shape.availability.pick({ heading: true }),
+      info: zod.object({
+        location: sections.contact.shape.info.shape.location.pick({
+          title: true,
+        }),
+        email: sections.contact.shape.info.shape.email.pick({ title: true }),
+        phone: sections.contact.shape.info.shape.phone.pick({ title: true }),
+        socialMedia: sections.contact.shape.info.shape.socialMedia.pick({
+          title: true,
+        }),
+      }),
+    }),
+    friends: sections.friends.pick({ title: true }),
+    footer: sections.footer,
+  }),
+})
+
+export type staticContent = zod.infer<typeof staticContent>
+
+//
+
+// * Schemas for dynamic content
+// The content that stored in database and edited by the user, fetched from the API
+export const dynamicContent = zod.object({
+  owner,
+
+  skills: zod.array(skill),
+  services: zod.array(service),
+  projects: zod.array(project),
+
+  sections: zod.object({
+    hero: sections.hero.pick({ heading: true, subheading: true }),
+    portfolio: sections.portfolio.pick({ subheading: true }),
+    about: sections.about.pick({ heading: true, text: true, image: true }),
+    contact: zod.object({
+      heading: sections.contact.shape.heading,
+      availability: sections.contact.shape.availability.pick({ status: true }),
+      info: zod.object({
+        location: sections.contact.shape.info.shape.location.pick({
+          text: true,
+          link: true,
+        }),
+        email: sections.contact.shape.info.shape.email.pick({ value: true }),
+        phone: sections.contact.shape.info.shape.phone.pick({ value: true }),
+        socialMedia: sections.contact.shape.info.shape.socialMedia.pick({
+          options: true,
+        }),
+      }),
+    }),
+    friends: sections.friends.pick({
+      heading: true,
+      subheading: true,
+      friendsList: true,
+    }),
+  }),
+})
+
+export type dynamicContent = zod.infer<typeof dynamicContent>
