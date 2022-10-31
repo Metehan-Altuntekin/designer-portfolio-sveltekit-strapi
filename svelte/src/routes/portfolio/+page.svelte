@@ -161,7 +161,7 @@
 
     &:hover {
       .project {
-        filter: brightness(0.7);
+        filter: brightness(1);
       }
     }
 
@@ -179,7 +179,7 @@
       }
 
       &:hover {
-        filter: brightness(1);
+        filter: brightness(0.85);
       }
     }
   }
