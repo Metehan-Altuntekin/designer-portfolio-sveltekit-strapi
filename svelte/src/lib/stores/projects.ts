@@ -5,7 +5,9 @@ import type { Project } from '$lib/types'
 import content from './content'
 
 // All the projects with no order
-const projects: Readable<Project[]> = readable(get(content).projects)
+const projects: Readable<Project[]> = derived(content, ($content) => {
+  return $content?.projects || []
+})
 
 export default projects
 
