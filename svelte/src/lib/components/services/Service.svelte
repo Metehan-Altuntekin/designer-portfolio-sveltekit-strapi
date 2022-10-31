@@ -8,9 +8,9 @@
   import Tags from './Tags.svelte'
   import Project from './Project.svelte'
 
-  import { filteredProjects } from '$lib/stores/projects'
+  import { sortedProjects } from '$lib/stores/projects'
 
-  $: projects = $filteredProjects[id]
+  $: projects = $sortedProjects[id]
 </script>
 
 <article>

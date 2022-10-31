@@ -4,10 +4,10 @@
 
   import type { Skill } from '$lib/types'
   import skills from '$lib/stores/skills'
-  import { filterParams, toggleFilterParams } from '$lib/stores/projects'
+  // import { filterParams, toggleFilterParams } from '$lib/stores/projects'
 
   function handleSkillSelection(skill: Skill) {
-    toggleFilterParams(serviceId, 'skills', skill.id)
+    // toggleFilterParams(serviceId, 'skills', skill.id)
     // console.info($filterParams)
   }
 </script>
@@ -15,9 +15,9 @@
 <ul>
   {#each $skills as skill}
     {#if skillIds.includes(skill.id)}
-      {@const selected = $filterParams[serviceId].skills.includes(skill.id)}
+      <!-- {@const selected = $filterParams[serviceId].skills.includes(skill.id)} -->
       <li on:click={() => handleSkillSelection(skill)}>
-        <img src={skill.largeIcon} alt={skill.name} title={skill.name} class:selected />
+        <img src={skill.largeIcon} alt={skill.name} title={skill.name} />
       </li>
     {/if}
   {/each}

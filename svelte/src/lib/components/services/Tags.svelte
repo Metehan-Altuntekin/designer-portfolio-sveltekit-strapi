@@ -1,21 +1,21 @@
 <script lang="ts">
   import type { Tag } from '$lib/types'
-  import { filterParams, toggleFilterParams } from '$lib/stores/projects'
+  // import { filterParams, toggleFilterParams } from '$lib/stores/projects'
 
   export let serviceId: number
   export let tags: Tag[]
 
   function handleTagSelection(tag: Tag) {
-    toggleFilterParams(serviceId, 'tags', tag)
-    console.info($filterParams)
+    // toggleFilterParams(serviceId, 'tags', tag)
+    // console.info($filterParams)
   }
 </script>
 
 <ul>
   {#each tags as tag}
-    {@const selected = $filterParams[serviceId].tags.includes(tag)}
+    <!-- {@const selected = $filterParams[serviceId].tags.includes(tag)} -->
     <li>
-      <button class="chip" on:click={() => handleTagSelection(tag)} class:selected>{tag}</button>
+      <button class="chip" on:click={() => handleTagSelection(tag)}>{tag}</button>
     </li>
   {/each}
 </ul>

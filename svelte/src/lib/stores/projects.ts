@@ -29,72 +29,78 @@ export const sortedProjects: Readable<SortedProjects> = derived(projects, ($proj
   }, {})
 })
 
-// At each service, filter projects related to filterParams
+// ! The logic below was made as content being ready at initialization
+// ! but it's not the case anymore, so this part is not compatible anymore
+// ! the functionality of this part was to filter the projects in services section
 
-export interface FilterParams {
-  [key: string]: {
-    skills?: number[]
-    tags?: string[]
-  }
-}
-export const filterParams: Writable<FilterParams> = writable(
-  Object.keys(get(sortedProjects)).reduce(
-    (prev, curr) => ({
-      ...prev,
-      [`${curr}`]: { skills: [], tags: [] },
-    }),
-    {}
-  )
-)
-export function toggleFilterParams(serviceId: number, paramType: string, value: number | string) {
-  filterParams.update((services): FilterParams => {
-    // console.info('toggleFilterParams', services[serviceId])
-    return {
-      ...services,
-      [`${serviceId}`]: {
-        ...services[`${serviceId}`],
-        [paramType]: services[`${serviceId}`][paramType].includes(value)
-          ? services[`${serviceId}`][paramType].filter((param) => param !== value)
-          : [...services[`${serviceId}`][paramType], value],
-      },
-    }
-  })
-}
+// // At each service, filter projects related to filterParams
 
-// TODO filtered stores for each service
+// export interface FilterParams {
+//   [key: string]: {
+//     skills: number[]
+//     tags: string[]
+//   }
+// }
+// export const filterParams: Writable<FilterParams> = writable(
+//   Object.keys(get(sortedProjects)).reduce(
+//     (prev, curr) => ({
+//       ...prev,
+//       [`${curr}`]: { skills: [], tags: [] },
+//     }),
+//     {}
+//   )
+// )
+// export function toggleFilterParams(serviceId: number, paramType: string, value: number | string) {
+//   filterParams.update((services): FilterParams => {
+//     // console.info('toggleFilterParams', services[serviceId])
+//     return {
+//       ...services,
+//       [`${serviceId}`]: {
+//         ...services[`${serviceId}`],
+//         [paramType]: services[`${serviceId}`][paramType].includes(value)
+//           ? services[`${serviceId}`][paramType].filter((param) => param !== value)
+//           : [...services[`${serviceId}`][paramType], value],
+//       },
+//     }
+//   })
+// }
 
-export const filteredProjects: Readable<SortedProjects> = derived(
-  [sortedProjects, filterParams],
-  ([$sortedProjects, $filterParams]) => {
-    return Object.keys($sortedProjects).reduce((prev, key) => {
-      return {
-        ...prev,
-        [key]: applyFilters($sortedProjects[key], $filterParams[`${key}`]),
-      }
-    }, {})
-  }
-)
+// // TODO filtered stores for each service
 
-function applyFilters(projects: Project[], params: { skills?: number[]; tags?: string[] }): Project[] {
-  if (params.skills.length < 1 && params.tags.length < 1) return projects
+// export const filteredProjects: Readable<SortedProjects> = derived(
+//   [sortedProjects, filterParams],
+//   ([$sortedProjects, $filterParams]) => {
+//     return Object.keys($sortedProjects).reduce((prev, key) => {
+//       return {
+//         ...prev,
+//         [key]: applyFilters($sortedProjects[key], $filterParams[`${key}`]),
+//       }
+//     }, {})
+//   }
+// )
 
-  return projects
-    .reduce((prev, curr) => {
-      const skillScore = curr.relatedServices.reduce((prev, curr) => {
-        if (params.skills.includes(curr)) return prev + 1
-        return prev
-      }, 0)
+// function applyFilters(projects: Project[], params: { skills: number[]; tags: string[] }): Project[] {
+//   if (params.skills.length < 1 && params.tags.length < 1) return projects
 
-      const tagScore = curr.relatedTags.reduce((prev, curr) => {
-        if (params.tags.includes(curr)) return prev + 1
-        return prev
-      }, 0)
+//   return projects
+//     .reduce((prev, curr) => {
+//       const skillScore = curr.relatedServices.reduce((prev, curr) => {
+//         if (params.skills.includes(curr)) return prev + 1
+//         return prev
+//       }, 0)
 
-      const totalScore = skillScore + tagScore
+//       const tagScore = curr.relatedTags.reduce((prev, curr) => {
+//         if (params.tags.includes(curr)) return prev + 1
+//         return prev
+//       }, 0)
 
-      if (totalScore == 0) return prev
+//       const totalScore = skillScore + tagScore
 
-      if (totalScore > 0) return [...prev, { ...curr, filterScore: totalScore }]
-    }, [])
-    .sort((a, b) => a.filterScore - b.filterScore)
-}
+//       if (totalScore == 0) return prev
+
+//       if (totalScore > 0) return [...prev, { ...curr, filterScore: totalScore }]
+
+//       return prev
+//     }, [])
+//     .sort((a, b) => a.filterScore - b.filterScore)
+// }
