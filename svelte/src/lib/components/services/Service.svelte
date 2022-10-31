@@ -9,6 +9,7 @@
   import Project from './Project.svelte'
 
   import { sortedProjects } from '$lib/stores/projects'
+  import { ROUTES } from '$lib/config'
 
   $: projects = $sortedProjects[id]
 </script>
@@ -25,8 +26,8 @@
     <Tags serviceId={service.id} tags={relatedTags} />
 
     <div class="CTAs">
-      <a class="button md" href="#contact">Get an Offer</a>
-      <a class="button secondary md" href="#">Portfolio</a>
+      <a class="button md" href={ROUTES.CONTACT}>Get an Offer</a>
+      <a class="button secondary md" href={ROUTES.PORTFOLIO}>Portfolio</a>
     </div>
   </section>
 

@@ -2,14 +2,14 @@
   import Icon from '@iconify/svelte'
   import { fly, fade } from 'svelte/transition'
 
-  import { NAV } from '$lib/config'
+  import { NAV, ROUTES } from '$lib/config'
 
   let mobileNav = false
   let mobileNavStep2 = false
 </script>
 
 <header id="header">
-  <a href="/" class="logo">
+  <a href={ROUTES.HOME} class="logo">
     <img src="./assets/logo.png" alt="Logo" />
     <span>Hüsnü Mahmudizer</span>
   </a>
@@ -20,7 +20,7 @@
     {#each NAV as option}
       <a href={option?.src} on:click={option?.onClick}>{option.name}</a>
     {/each}
-    <a class="button secondary sm" href="#contact">Contact</a>
+    <a class="button secondary sm" href={ROUTES.CONTACT}>Contact</a>
   </nav>
 
   <!-- TODO create a component for mutually transitioning elements like these -->
@@ -42,7 +42,7 @@
         {#each NAV as option}
           <a href={option?.src} on:click={option?.onClick}>{option.name}</a>
         {/each}
-        <a class="secondary sm" href="#contact">Contact</a>
+        <a class="secondary sm" href={ROUTES.CONTACT}>Contact</a>
       </nav>
     {/if}
   {/if}

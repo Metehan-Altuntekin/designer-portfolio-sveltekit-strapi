@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { CONTENT } from '$lib/config'
+  import { CONTENT, ROUTES } from '$lib/config'
 
   const { logo } = CONTENT.owner
   const { disclaimer, copyright, privacyPolicy } = CONTENT.sections.footer
@@ -11,7 +11,7 @@
     <h1>{copyright} <sup>ⓒ</sup></h1>
     <h2>{disclaimer}</h2>
   </div>
-  <a href="#" title="Just kidding :D" class="privacy-policy">{privacyPolicy}</a>
+  <a href={ROUTES.PRIVACY_POLICY} title="Just kidding :D" class="privacy-policy">{privacyPolicy}</a>
 </footer>
 
 <style lang="scss">
