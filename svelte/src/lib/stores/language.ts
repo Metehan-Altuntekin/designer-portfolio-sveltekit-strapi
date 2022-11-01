@@ -4,10 +4,14 @@
 // The object is divided into sections
 // The content is being accessed by using this single object
 
-import { type Writable, type Readable, writable, derived, get } from 'svelte/store'
+import { type Readable, writable, derived, get } from 'svelte/store'
 
 import locales from '$lib/locales'
 import { staticContent } from '$lib/schemas'
+
+// * Constants
+
+export const DEFAULT_LANGUAGE = 'tr'
 
 export const LANGUAGES = {
   en: {
@@ -22,24 +26,50 @@ export const LANGUAGES = {
   },
 }
 
-export const DEFAULT_LANGUAGE = 'en'
+type language = keyof typeof LANGUAGES
 
-//
+// ------------------------------
 
-export const language: Writable<keyof typeof LANGUAGES> = writable('en')
+// * Stores
 
-export function setLanguage(lang: keyof typeof LANGUAGES) {
+export const language = writable<language>(DEFAULT_LANGUAGE)
+
+export const locale: Readable<staticContent> = derived(language, ($language) => {
+  // constantly update the locale
+  return locales[$language] ?? locales[DEFAULT_LANGUAGE]
+})
+
+// ------------------------------
+
+// * Functions
+
+export const setHtmlLang = (lang: language) => document.documentElement.setAttribute('lang', lang)
+
+// change the html lang attribute to match the language
+language.subscribe((lang) => {
+  try {
+    setHtmlLang(lang)
+  } catch (e) {
+    console.error('Error setting language', e)
+  }
+})
+
+export function setLanguage(lang: language) {
   if (LANGUAGES[lang]) {
     language.set(lang)
+    setHtmlLang(lang)
   } else {
     console.error('Language not found:', lang)
     language.set(DEFAULT_LANGUAGE)
+    setHtmlLang(DEFAULT_LANGUAGE)
   }
 }
 
-//
+export function initLanguage() {
+  const browserLang = navigator.language.split('-')[0]
 
-// constantly update the locale
-export const locale: Readable<staticContent> = derived(language, ($language) => {
-  return locales[$language]
-})
+  // if the language of the browser is not supported, use the default language
+  const lang: language = Object.keys(LANGUAGES).includes(browserLang) ? (browserLang as language) : DEFAULT_LANGUAGE
+
+  setLanguage(lang)
+}
