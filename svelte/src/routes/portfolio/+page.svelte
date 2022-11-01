@@ -1,8 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
 
-  import { CONTENT } from '$lib/config'
-
+  import content from '$lib/stores/content'
   import { filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
   import { openModal } from '$lib/stores/projectDetailsModal'
 
@@ -10,7 +9,7 @@
   import SkillsFilter from '$lib/components/portfolio/SkillsFilter.svelte'
   import TagsFilter from '$lib/components/portfolio/TagsFilter.svelte'
 
-  const { title, subheading, filters: filterNames } = CONTENT.sections.portfolio
+  const { title, subheading, filters: filterNames } = $content.sections.portfolio
 
   let displayMobileFilter = false
 

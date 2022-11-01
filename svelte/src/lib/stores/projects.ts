@@ -2,7 +2,7 @@ import type { Readable, Writable } from 'svelte/store'
 import { readable, writable, derived, get } from 'svelte/store'
 import type { Project } from '$lib/types'
 
-import content from './content'
+import content from '$lib/stores/content'
 
 // All the projects with no order
 const projects: Readable<Project[]> = derived(content, ($content) => {

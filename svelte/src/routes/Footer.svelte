@@ -1,8 +1,11 @@
 <script lang="ts">
-  import { CONTENT, ROUTES } from '$lib/config'
+  import { ROUTES } from '$lib/config'
+  import content from '$lib/stores/content'
 
-  const { logo } = CONTENT.owner
-  const { disclaimer, copyright, privacyPolicy } = CONTENT.sections.footer
+  $: logo = $content.owner.logo
+  $: disclaimer = $content.sections.footer.disclaimer
+  $: copyright = $content.sections.footer.copyright
+  $: privacyPolicy = $content.sections.footer.privacyPolicy
 </script>
 
 <footer id="footer">

@@ -740,8 +740,9 @@ export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
 
   sections: {
     hero: {
-      heading: 'We are a creative studio',
-      subheading: 'We are a creative studio specializing in high-end 3D visualization',
+      heading: 'Welcome to the awesome portfolio site',
+      subheading:
+        "This portfolio site project made with PHP & Svelte! It runs on Apache server and doesn't require Node.js!",
     },
 
     portfolio: {

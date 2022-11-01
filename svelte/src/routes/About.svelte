@@ -1,13 +1,15 @@
 <script lang="ts">
-  import { CONTENT } from '$lib/config'
+  import content from '$lib/stores/content'
 
-  const { name, surname } = CONTENT.owner
-  const { heading, text, image } = CONTENT.sections.about
+  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  $: heading = $content.sections.about.heading
+  $: text = $content.sections.about.text
+  $: image = $content.sections.about.image
 </script>
 
 <section id="about">
   <h1>{heading}</h1>
-  <div class="image"><img src={image} alt={name + ' ' + surname} title={name + ' ' + surname} /></div>
+  <div class="image"><img src={image} alt={fullName} title={fullName} /></div>
   <p>{text}</p>
 </section>
 

@@ -10,8 +10,12 @@
 
   import { sortedProjects } from '$lib/stores/projects'
   import { ROUTES } from '$lib/config'
+  import content from '$lib/stores/content'
 
   $: projects = $sortedProjects[id]
+
+  $: getAnOffer = $content.sections.services.actions.getAnOffer
+  $: portfolio = $content.sections.services.actions.portfolio
 </script>
 
 <article>
@@ -26,8 +30,8 @@
     <Tags serviceId={service.id} tags={relatedTags} />
 
     <div class="CTAs">
-      <a class="button md" href={ROUTES.CONTACT}>Get an Offer</a>
-      <a class="button secondary md" href={ROUTES.PORTFOLIO}>Portfolio</a>
+      <a class="button md" href={ROUTES.CONTACT}>{getAnOffer}</a>
+      <a class="button secondary md" href={ROUTES.PORTFOLIO}>{portfolio}</a>
     </div>
   </section>
 

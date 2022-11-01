@@ -1,11 +1,11 @@
 <script lang="ts">
-  import { CONTENT } from '$lib/config'
-
-  const {
-    heading,
-    availability,
-    info: { location, email, phone, socialMedia },
-  } = CONTENT.sections.contact
+  import content from '$lib/stores/content'
+  $: heading = $content.sections.contact.heading
+  $: availability = $content.sections.contact.availability
+  $: location = $content.sections.contact.info.location
+  $: email = $content.sections.contact.info.email
+  $: phone = $content.sections.contact.info.phone
+  $: socialMedia = $content.sections.contact.info.socialMedia
 
   import ContactForm from '$lib/components/contact/ContactForm.svelte'
 </script>

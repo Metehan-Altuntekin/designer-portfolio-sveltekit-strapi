@@ -1,7 +1,9 @@
 <script lang="ts">
-  import { CONTENT } from '$lib/config'
+  import content from '$lib/stores/content'
 
-  const { heading, subheading, friendsList: friends } = CONTENT.sections.friends
+  $: heading = $content.sections.friends.heading
+  $: subheading = $content.sections.friends.subheading
+  $: friends = $content.sections.friends.friendsList
 
   import Friend from '$lib/components/friends/Friend.svelte'
 </script>

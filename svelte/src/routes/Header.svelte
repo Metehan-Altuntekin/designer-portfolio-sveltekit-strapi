@@ -3,24 +3,28 @@
   import { fly, fade } from 'svelte/transition'
 
   import { NAV, ROUTES } from '$lib/config'
+  import content from '$lib/stores/content'
 
   let mobileNav = false
   let mobileNavStep2 = false
+
+  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  $: nav = $content.sections.header.nav
 </script>
 
 <header id="header">
-  <a href={ROUTES.HOME} class="logo">
+  <a href={ROUTES.HOME} class="logo" title={nav.home}>
     <img src="./assets/logo.png" alt="Logo" />
-    <span>Hüsnü Mahmudizer</span>
+    <span>{fullName}</span>
   </a>
 
   <button class="mobile-nav-toggle" on:click={() => (mobileNav = !mobileNav)}><Icon icon="eva:menu-outline" /></button>
 
   <nav>
     {#each NAV as option}
-      <a href={option?.src} on:click={option?.onClick}>{option.name}</a>
+      <a href={option?.src} on:click={option?.onClick}>{nav[option.name.toLowerCase()]}</a>
     {/each}
-    <a class="button secondary sm" href={ROUTES.CONTACT}>Contact</a>
+    <a class="button secondary sm" href={ROUTES.CONTACT}>{nav?.contact}</a>
   </nav>
 
   <!-- TODO create a component for mutually transitioning elements like these -->
@@ -96,7 +100,7 @@
       font-size: 1rem;
 
       @include md {
-        display: block;
+        display: flex;
       }
 
       a {

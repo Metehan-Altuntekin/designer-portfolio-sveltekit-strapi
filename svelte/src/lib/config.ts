@@ -1,6 +1,4 @@
-import content from '$lib/content'
-
-export const CONTENT = content
+// import content from '$lib/stores/content'
 
 export const MAIN_URL = '/'
 
@@ -17,7 +15,7 @@ export const ROUTES = {
 
 export const NAV: {
   name: string
-  onClick?: () => void // TODO MouseEventHandler<HTMLAnchorElement> error
+  onClick?: svelte.JSX.MouseEventHandler<HTMLAnchorElement>
   src?: string
 }[] = [
   {

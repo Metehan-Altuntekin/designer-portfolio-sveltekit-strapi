@@ -1,13 +1,17 @@
 <script lang="ts">
   import { ROUTES } from '$lib/config'
+
+  import content from '$lib/stores/content'
+
+  $: hero = $content.sections.hero
 </script>
 
 <section id="hero">
-  <h1>Welcome to the awesome portfolio site</h1>
-  <p>This portfolio site project made with PHP & Svelte! It runs on Apache server and doesn't require Node.js!</p>
+  <h1>{hero.heading}</h1>
+  <p>{hero.subheading}</p>
   <div class="CTAs">
-    <a class="button lg" href={ROUTES.SERVICES}>Services</a>
-    <a class="button secondary lg" href={ROUTES.PORTFOLIO}>Portfolio</a>
+    <a class="button lg" href={ROUTES.SERVICES}>{hero.actions.services}</a>
+    <a class="button secondary lg" href={ROUTES.PORTFOLIO}>{hero.actions.portfolio}</a>
   </div>
   <div class="image"><img src="./assets/hero-image.png" alt="Figure" /></div>
 </section>
