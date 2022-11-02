@@ -54,87 +54,100 @@
 
 <style lang="scss">
   header {
-    background-color: #343a54;
+    --header-bg-color: #343a54;
+    --mobile-nav-bg-color: #4f5779;
+    --header-text-color: #fff;
+
+    --header-logo-size: clamp(30px, max(4vh, 2.4vw), 75px);
+    --header-logo-text-size: calc(var(--header-logo-size) * 0.5);
+
+    @include section;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: fixed;
+
     inset: 0;
+    position: fixed;
     bottom: auto;
     z-index: 9;
-    @include section;
 
-    .logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        $height: clamp(30px, max(4vh, 2.4vw), 75px);
-        font-size: $height;
-        height: $height;
-        margin: 10px 0;
-      }
-      span {
-        white-space: nowrap;
-        font-size: clamp(1rem, max(2vh, 1.2vw), 1.6rem);
-        font-family: Kanit, Montserrat, sans-serif;
-        margin-left: 0.75em;
-      }
+    background-color: var(--header-bg-color);
+  }
+
+  // Logo and name of the owner
+  .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      font-size: var(--header-logo-size);
+      margin: 10px 0;
+      height: var(--header-logo-size);
     }
-
-    .mobile-nav-toggle {
-      display: flex;
-      background-color: transparent;
-      color: white;
-      font-size: 2rem;
-      justify-content: center;
-      align-items: center;
-
-      @include md {
-        display: none;
-      }
+    span {
+      margin-left: 0.75em;
+      color: var(--header-text-color);
+      white-space: nowrap;
+      font-size: var(--header-logo-text-size);
+      font-family: Kanit, Montserrat, sans-serif;
     }
+  }
 
-    nav {
+  // Toggle button for mobile nav
+  .mobile-nav-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    color: var(--header-text-color);
+    font-size: 2rem;
+
+    @include md {
       display: none;
-      font-size: 1rem;
-
-      @include md {
-        display: flex;
-      }
-
-      a {
-        font-family: Poppins, Kanit, Segoe UI, sans-serif;
-        font-size: 1em;
-        line-height: 1;
-        padding: 0.5em 1em;
-
-        @include hover;
-      }
-
-      &.mobile-nav {
-        display: flex;
-        position: fixed;
-        inset: 0 0 0 auto;
-        background-color: #4f5779;
-        flex-direction: column;
-        z-index: 999;
-        padding: 10vh 1.5em;
-
-        @include md {
-          display: none;
-        }
-
-        .special {
-          margin-top: 0.5em;
-        }
-      }
     }
-    .mobile-nav_bg {
-      position: fixed;
-      inset: 0;
-      background-color: #0004;
-      z-index: 99;
+  }
+
+  // Desktop nav and basis for mobile nav
+  nav {
+    display: none;
+
+    font-size: 1rem;
+
+    @include md {
+      display: flex;
     }
+
+    a {
+      font-family: Poppins, Kanit, Segoe UI, sans-serif;
+      font-size: 1em;
+      line-height: 1;
+      padding: 0.5em 1em;
+
+      @include hover;
+    }
+  }
+
+  // Mobile nav
+  nav.mobile-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    inset: 0 0 0 auto;
+    z-index: 999;
+    padding: 10vh 1.5em;
+    background-color: var(--mobile-nav-bg-color);
+
+    @include md {
+      display: none;
+    }
+  }
+
+  .mobile-nav_bg {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background-color: #0004;
   }
 </style>
