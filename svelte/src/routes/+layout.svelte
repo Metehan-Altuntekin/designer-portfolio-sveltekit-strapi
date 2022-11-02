@@ -14,7 +14,8 @@
 <ProjectDetailsModal />
 <NotificationProvider />
 
-<style lang="scss">
+<style lang="scss" global>
+  @import '$lib/styles/global.css';
   main > :global(section) {
     @include section;
   }

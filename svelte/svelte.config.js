@@ -11,7 +11,7 @@ export default {
   // for more information about preprocessors
   preprocess: sveltePreprocess({
     scss: {
-      prependData: `@import '${filePath.replaceAll('\\', '/')}/src/style/app.scss';`,
+      prependData: `@import '${filePath.replaceAll('\\', '/')}/src/lib/styles/app.scss';`,
     },
   }),
 
