@@ -6,6 +6,8 @@
 
 import { type Readable, writable, derived, get } from 'svelte/store'
 
+import { GB, TR } from 'country-flag-icons/string/3x2'
+
 import locales from '$lib/locales'
 import { staticContent } from '$lib/schemas'
 
@@ -17,12 +19,12 @@ export const LANGUAGES = {
   en: {
     key: 'en',
     name: 'English',
-    flag: '🇬🇧',
+    flag: GB,
   },
   tr: {
     key: 'tr',
     name: 'Türkçe',
-    flag: '🇹🇷',
+    flag: TR,
   },
 }
 
