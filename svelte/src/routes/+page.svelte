@@ -5,7 +5,15 @@
   import About from './About.svelte'
   import Contact from './Contact.svelte'
   import Friends from './Friends.svelte'
+
+  import content from '$lib/stores/content'
+
+  $: fullName = $content.owner.name + ' ' + $content.owner.surname
 </script>
+
+<svelte:head>
+  <title>{fullName}</title>
+</svelte:head>
 
 <Hero />
 <Services />

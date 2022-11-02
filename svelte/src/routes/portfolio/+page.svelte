@@ -9,14 +9,16 @@
   import SkillsFilter from '$lib/components/portfolio/SkillsFilter.svelte'
   import TagsFilter from '$lib/components/portfolio/TagsFilter.svelte'
 
-  const { title, subheading, filters: filterNames } = $content.sections.portfolio
+  $: title = $content.sections.portfolio.title
+  $: subheading = $content.sections.portfolio.subheading
+  $: filterNames = $content.sections.portfolio.filters
 
-  let displayMobileFilter = false
-
-  function toggleFilterModal() {
-    displayMobileFilter = !displayMobileFilter
-  }
+  $: fullName = $content.owner.name + ' ' + $content.owner.surname
 </script>
+
+<svelte:head>
+  <title>{title} | {fullName}</title>
+</svelte:head>
 
 <section id="portfolio" transition:fly={{ x: 500, duration: 300, opacity: 0 }}>
   <header>
