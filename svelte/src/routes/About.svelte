@@ -8,14 +8,18 @@
 </script>
 
 <section id="about">
-  <h1>{heading}</h1>
+  <h1 class="heading">{heading}</h1>
   <div class="image"><img src={image} alt={fullName} title={fullName} /></div>
-  <p>{text}</p>
+  <p class="paragraph">{text}</p>
 </section>
 
 <style lang="scss">
   section {
+    --about-heading-size: clamp(2rem, 5vw, 5rem);
+    --about-image-mask: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0));
+
     @include section;
+
     display: flex;
     flex-wrap: wrap;
     align-items: start;
@@ -29,11 +33,11 @@
     }
   }
 
-  h1 {
+  .heading {
     color: #fffa;
     width: 60%;
     line-height: 1;
-    font-size: clamp(2rem, 5vw, 5rem);
+    font-size: var(--about-heading-size);
 
     @include lg {
       width: unset;
@@ -41,14 +45,21 @@
   }
 
   .image {
+    // sided on the right on mobile
     width: 40%;
 
+    // mask the image with a gradient opacity
+    // to make it look like faded out in the background
+    mask-image: var(--about-image-mask);
+    -webkit-mask-image: var(--about-image-mask);
+
+    // centered on desktop
     @include lg {
       width: unset;
     }
   }
 
-  p {
+  .paragraph {
     @include paragraph(1);
 
     text-align: center;
