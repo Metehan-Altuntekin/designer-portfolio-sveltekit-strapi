@@ -48,65 +48,73 @@
 
 <style lang="scss">
   article {
-    gap: 5vw;
-    margin-bottom: 10vh;
-
+    // single column layout for mobile
     display: flex;
     align-items: start;
     flex-direction: column;
 
+    gap: 5vw;
+    margin-bottom: 10vh;
+
+    // two column layout for desktop screens
     @include sm {
       flex-direction: row;
+
+      // alternate the order of the sections
       &:nth-child(even) {
         flex-direction: row-reverse;
         right: 0;
       }
     }
+  }
 
-    > .content {
-      @include sm {
-        position: sticky;
-      }
-      top: 15vh;
-      left: 0;
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    top: 15vh;
+    left: 0;
+    width: 100%;
+
+    // fix position of content section on scroll
+    @include sm {
+      position: sticky;
+    }
+
+    h1 {
+      @include title;
       display: flex;
-      flex-direction: column;
-      width: 100%;
-      h1 {
-        @include title;
-        display: flex;
-        align-items: center;
-        justify-content: start;
+      align-items: center;
+      justify-content: start;
 
-        img {
-          height: 1em;
-        }
-      }
-
-      p {
-        &.primary {
-          @include paragraph(1);
-        }
-        &.secondary {
-          @include paragraph(2, Montserrat);
-        }
-      }
-
-      .CTAs {
-        display: flex;
-        justify-self: start;
-        align-items: flex-start;
-        gap: 1rem;
-        margin-top: 2rem;
+      img {
+        height: 1em;
       }
     }
 
-    > .portfolio {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-auto-rows: max-content;
+    p {
+      &.primary {
+        @include paragraph(1);
+      }
+      &.secondary {
+        @include paragraph(2, Montserrat);
+      }
+    }
+
+    .CTAs {
+      display: flex;
+      justify-self: start;
+      align-items: flex-start;
       gap: 1rem;
-      width: 100%;
+      margin-top: 2rem;
     }
+  }
+
+  .portfolio {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: max-content;
+    gap: 1rem;
+    width: 100%;
   }
 </style>
