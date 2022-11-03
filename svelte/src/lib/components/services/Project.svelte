@@ -22,7 +22,9 @@
       <h2>
         {#each relatedServices as serviceId}
           {@const service = $services.find((e) => e.id === serviceId)}
-          <span>{service.name}</span>
+          {#if service}
+            <span>{service.name}</span>
+          {/if}
         {/each}
       </h2>
     </div>
@@ -30,7 +32,9 @@
       <div class="skills">
         {#each relatedSkills.slice(0, 2) as skillId}
           {@const skill = $skills.find((e) => e.id === skillId)}
-          <img src={skill.icon} alt={skill.name} title={skill.name} />
+          {#if skill}
+            <img src={skill.icon} alt={skill.name} title={skill.name} />
+          {/if}
         {/each}
       </div>
       <div class="tags">
