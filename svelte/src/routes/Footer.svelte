@@ -19,10 +19,9 @@
 
 <style lang="scss">
   footer {
+    --footer-bg-color: #112;
+
     @include section;
-    background-color: #112;
-    padding-top: clamp(15px, 3vw, 50px);
-    padding-bottom: 50px;
 
     display: flex;
     justify-content: space-between;
@@ -30,6 +29,10 @@
 
     position: relative;
     z-index: 1;
+
+    background-color: var(--footer-bg-color);
+    padding-top: clamp(15px, 3vw, 50px);
+    padding-bottom: 50px;
   }
 
   .disclaimer-container > h1 {
@@ -44,14 +47,17 @@
   }
 
   .logo-watermark {
-    position: absolute;
-    z-index: -1;
-    inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.1;
+
+    position: absolute;
+    z-index: -1;
+    inset: 0;
     overflow: hidden;
+
+    opacity: 0.1;
+
     > img {
       max-height: unset;
       height: 150%;
