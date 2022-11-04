@@ -25,6 +25,14 @@
             {#each $selectedProject.images as image}
               <SwiperSlide><img src={image} alt="" style="width: 100%;" /></SwiperSlide>
             {/each}
+            {#each $selectedProject.videos as video}
+              <SwiperSlide>
+                <video controls>
+                  <source src={video} type="video/mp4" />
+                  <track kind="captions" />
+                </video>
+              </SwiperSlide>
+            {/each}
           </Swiper>
         </div>
 
@@ -90,6 +98,12 @@
       aspect-ratio: 2 / 1;
     }
   }
+
+  .slider video,
+  .slider img {
+    width: 100%;
+  }
+
   .slider :global(.swiper-pagination-bullet) {
     width: 12px;
     height: 12px;
