@@ -7,7 +7,7 @@
 
   import { selectedProject, closeModal } from '$lib/stores/projectDetailsModal'
   import { getService } from '$lib/stores/services'
-  import skills, { getSkill } from '$lib/stores/skills'
+  import { getSkill } from '$lib/stores/skills'
 </script>
 
 {#if $selectedProject}
@@ -40,7 +40,7 @@
           <h1 class="name">{$selectedProject.name}</h1>
           <h2 class="services">
             {#each $selectedProject.relatedServices as serviceId (serviceId)}
-              <span>{getService(serviceId).name}</span>
+              <span>{getService(serviceId)?.name}</span>
             {/each}
           </h2>
           <ul class="skills-list">
@@ -64,19 +64,30 @@
 {/if}
 
 <style lang="scss">
+  // wrapper covers the entire screen
   .wrapper {
-    background-color: #0007;
+    --bg-color: #222228;
+    --slider-aspect-ratio-desktop: 2 / 1;
+    --slider-aspect-ratio-mobile: 1;
+
+    --project-name-font-size: clamp(1.5rem, 2vw, 2rem);
+    --services-font-size: clamp(1rem, 1.5vw, 1.5rem);
+    --skill-icon-size: clamp(1.5rem, 2vw, 2.5rem);
+
     position: fixed;
     inset: 0;
+    z-index: 1000;
+
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 1000;
+
+    background-color: #0007;
   }
 
   // Container is for the modal
   .container {
-    background-color: #222228;
+    background-color: var(--bg-color);
     width: 90%;
     max-height: 90%;
     @include lg {
@@ -89,19 +100,21 @@
     box-shadow: 0 0 10px 0 #0007;
   }
 
+  // slider
   .slider :global(.swiper-slide) {
     margin-bottom: 36px; // margin for pagination to be visible
     width: 100%;
-    aspect-ratio: 1/1;
+    aspect-ratio: var(--slider-aspect-ratio-mobile);
 
     @include sm {
-      aspect-ratio: 2 / 1;
+      aspect-ratio: var(--slider-aspect-ratio-desktop);
     }
   }
 
   .slider video,
   .slider img {
     width: 100%;
+    height: 100%;
   }
 
   .slider :global(.swiper-pagination-bullet) {
@@ -114,11 +127,9 @@
     opacity: 1;
   }
 
+  // text content
   figcaption {
-    padding: clamp(1rem, 4vw, 2rem);
-    padding-top: 16px;
     display: grid;
-
     grid-template-rows: repeat(4, auto);
     grid-template-columns: repeat(2, auto);
     grid-template-areas:
@@ -127,6 +138,9 @@
       'serv serv'
       'skil tags';
     align-content: space-between;
+
+    padding: clamp(1rem, 4vw, 2rem);
+    padding-top: 16px;
 
     @include sm {
       grid-template-rows: repeat(3, auto);
@@ -141,22 +155,25 @@
 
   .name {
     grid-area: name;
-    @include title();
-    font-size: clamp(1.5rem, 2vw, 2rem);
-    font-weight: 500;
     margin-bottom: 1em;
+
+    @include title();
+    font-size: var(--project-name-font-size);
+    font-weight: 500;
+
     @include sm {
       margin-bottom: 0;
     }
   }
   .services {
     grid-area: serv;
-    font-size: clamp(1rem, 1.5vw, 1.5rem);
-    font-weight: 500;
-    margin-bottom: 1rem;
-    color: #999;
     display: flex;
     gap: 1em;
+    margin-bottom: 1rem;
+
+    font-size: var(--services-font-size);
+    font-weight: 500;
+    color: #999;
 
     span {
       font-size: inherit;
@@ -167,13 +184,13 @@
   .skills-list {
     grid-area: skil;
     display: flex;
+    align-items: end;
     gap: 0.5em;
 
     li {
       display: block;
-      height: 2em;
+      height: var(--skill-icon-size);
     }
-    align-items: end;
   }
   .tags-list {
     grid-area: tags;
