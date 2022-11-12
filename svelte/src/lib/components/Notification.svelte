@@ -39,21 +39,21 @@
     --title-size: calc(var(--message-size) * 1.5);
     --close-button-size: clamp(1.5rem, 1.5vw, 2rem);
 
-    --success-title-color: #0f5132;
-    --success-message-color: #155724;
-    --success-bg-color: #d1e7dd;
+    --success-title-color: black;
+    --success-message-color: #000a;
+    --success-bg-color: var(--color-success);
 
-    --info-title-color: #0c5460;
-    --info-message-color: #0c5460;
-    --info-bg-color: #d1ecf1;
+    --info-title-color: black;
+    --info-message-color: #000a;
+    --info-bg-color: var(--color-info);
 
-    --warning-title-color: #664d03;
-    --warning-message-color: #664d03;
-    --warning-bg-color: #fff3cd;
+    --warning-title-color: black;
+    --warning-message-color: #000a;
+    --warning-bg-color: var(--color-warning);
 
-    --error-title-color: #842029;
-    --error-message-color: #842029;
-    --error-bg-color: #f8d7da;
+    --error-title-color: black;
+    --error-message-color: #000a;
+    --error-bg-color: var(--color-danger);
 
     --progress-color: #006eff;
     --progress-bg-color: transparent;
