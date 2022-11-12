@@ -2,6 +2,12 @@
   --color-primary: #3759ff;
   --color-bg: #182128;
 
+  --color-success: #84C111;
+  --color-info: #34EFEF;
+  --color-warning: #FCD135;
+  --color-danger: #FF4921;
+
+
 }
 
 * {
