@@ -838,7 +838,7 @@ export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
 
 export const getContent = async () => {
   // this is temporary for development purposes
-  await new Promise((resolve) => setTimeout(resolve, 5000))
+  // await new Promise((resolve) => setTimeout(resolve, 3000))
   return MOCK_DYNAMIC_CONTENT
 
   const response = await axios.get('/content.json', {
