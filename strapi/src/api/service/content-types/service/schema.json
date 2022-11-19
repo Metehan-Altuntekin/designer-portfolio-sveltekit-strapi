@@ -69,13 +69,9 @@
       "target": "api::skill.skill"
     },
     "relatedTags": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string",
-      "default": "fix this!"
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::tag.tag"
     }
   }
 }
