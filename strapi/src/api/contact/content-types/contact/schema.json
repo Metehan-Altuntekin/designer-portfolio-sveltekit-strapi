@@ -45,7 +45,7 @@
         }
       },
       "type": "string",
-      "maxLength": 16,
+      "maxLength": 20,
       "minLength": 6,
       "required": true,
       "regex": "^(?:\\+\\d{1,3}|0\\d{1,3}|00\\d{1,2})?(?:\\s?\\(\\d+\\))?(?:[-\\s.]|\\d)+$"
@@ -68,7 +68,6 @@
         }
       },
       "type": "string",
-      "regex": "^https?\\:\\/\\/(www\\.|maps\\.)?google(\\.[a-z]+){1,2}\\/maps\\/?\\?([^&]+&)*(ll=-?[0-9]{1,2}\\.[0-9]+,-?[0-9]{1,2}\\.[0-9]+|q=[^&]+)+($|&)",
       "required": true
     }
   }
