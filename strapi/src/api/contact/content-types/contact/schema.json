@@ -60,11 +60,6 @@
       "required": true,
       "regex": "^(?:\\+\\d{1,3}|0\\d{1,3}|00\\d{1,2})?(?:\\s?\\(\\d+\\))?(?:[-\\s.]|\\d)+$"
     },
-    "social_medias": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::social-media.social-media"
-    },
     "location": {
       "pluginOptions": {
         "i18n": {
