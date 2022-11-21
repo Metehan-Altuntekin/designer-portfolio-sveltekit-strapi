@@ -27,16 +27,6 @@
       "maxLength": 40,
       "minLength": 20
     },
-    "availability": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": false
-        }
-      },
-      "type": "boolean",
-      "default": true,
-      "required": false
-    },
     "email": {
       "pluginOptions": {
         "i18n": {

@@ -1,0 +1,20 @@
+{
+  "kind": "singleType",
+  "collectionName": "availabilities",
+  "info": {
+    "singularName": "availability",
+    "pluralName": "availabilities",
+    "displayName": "availability"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "status": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    }
+  }
+}
