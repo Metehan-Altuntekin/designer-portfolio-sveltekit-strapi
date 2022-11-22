@@ -51,6 +51,42 @@ const fetchProjects = async ({ locale }): Promise<Project[]> => {
   }
 };
 
+const fetchServices = async ({ locale }): Promise<Service[]> => {
+  try {
+    const { results } = (await strapi.service("api::service.service").find({
+      locale,
+      populate: ["icon", "relatedSkills", "relatedTags"],
+    })) as {
+      results: any[];
+    };
+
+    return results.map((service): Service => {
+      const {
+        id,
+        name,
+        icon,
+        textPrimary,
+        textSecondary,
+        relatedSkills,
+        relatedTags,
+      } = service;
+
+      return {
+        id,
+        name,
+        icon: process.env.URL + icon.url,
+        textPrimary,
+        textSecondary,
+        relatedSkills: relatedSkills?.map((skill) => skill.id) || [],
+        relatedTags: relatedTags?.map((tag) => tag.name) || [],
+      };
+    });
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
 const fetchHero = async ({ locale }): Promise<Sections.Hero> => {
   try {
     const { heading, subheading } = (await strapi
@@ -127,6 +163,7 @@ export default () => ({
     try {
       return {
         projects: await fetchProjects({ locale }),
+        services: await fetchServices({ locale }),
         sections: {
           hero: await fetchHero({ locale }),
           portfolio: await fetchPortfolio({ locale }),
