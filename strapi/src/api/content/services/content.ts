@@ -1,8 +1,11 @@
 /**
  * content service
+ * returns all content in a single object for the given locale
  */
 
 import { Project, Service, Skill, Friend, Sections, Content } from "../types";
+
+// collection types
 
 const fetchProjects = async ({ locale }): Promise<Project[]> => {
   try {
@@ -111,6 +114,34 @@ const fetchSkills = async ({ locale }): Promise<Skill[]> => {
     return [];
   }
 };
+
+const fetchFriends = async ({ locale }): Promise<Friend[]> => {
+  try {
+    const { results } = (await strapi.service("api::friend.friend").find({
+      locale,
+      populate: ["image"],
+    })) as {
+      results: any[];
+    };
+
+    return results.map((friend): Friend => {
+      const { name, image, link, roles } = friend;
+
+      return {
+        name,
+
+        image: process.env.URL + image.url,
+        link,
+        roles,
+      };
+    });
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
+// single types
 
 const fetchHero = async ({ locale }): Promise<Sections.Hero> => {
   try {
