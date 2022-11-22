@@ -296,6 +296,27 @@ const fetchContact = async ({ locale }): Promise<Sections.Contact> => {
   }
 };
 
+const fetchFriendsSection = async ({ locale }): Promise<Sections.Friends> => {
+  try {
+    const { heading, subheading } = (await strapi
+      .service("api::friends-section.friends-section")
+      .find({ locale })) as { heading: string; subheading: string };
+
+    return {
+      heading,
+      subheading,
+      friendsList: await fetchFriends({ locale }),
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      heading: "",
+      subheading: "",
+      friendsList: [],
+    };
+  }
+};
+
 export default () => ({
   exampleAction: async (ctx) => {
     try {
@@ -305,11 +326,7 @@ export default () => ({
     }
   },
 
-  fetchAllContent: async ({
-    locale,
-  }: {
-    locale: string;
-  }): Promise<Content | any> => {
+  fetchAllContent: async ({ locale }: { locale: string }): Promise<Content> => {
     try {
       return {
         skills: await fetchSkills({ locale }),
@@ -321,6 +338,7 @@ export default () => ({
           portfolio: await fetchPortfolio({ locale }),
           about: await fetchAbout({ locale }),
           contact: await fetchContact({ locale }),
+          friends: await fetchFriendsSection({ locale }),
         },
       };
     } catch (err) {
