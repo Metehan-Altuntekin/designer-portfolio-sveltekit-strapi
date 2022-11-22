@@ -2,7 +2,9 @@
  * content service
  */
 
-const fetchProjects = async ({ locale }) => {
+import { Project, Service, Skill, Friend, Sections, Content } from "../types";
+
+const fetchProjects = async ({ locale }): Promise<Project[]> => {
   try {
     const { results } = (await strapi.service("api::project.project").find({
       locale,
@@ -18,8 +20,9 @@ const fetchProjects = async ({ locale }) => {
       results: any[];
     };
 
-    return results.map((project) => {
+    return results.map((project): Project => {
       const {
+        id,
         name,
         description,
         thumbnail,
@@ -30,14 +33,13 @@ const fetchProjects = async ({ locale }) => {
         relatedTags,
       } = project;
 
-      console.info("project videos", project.videos);
-
       return {
+        id,
         name,
-        description,
+        description: description,
         thumbnail: process.env.URL + thumbnail.url,
         images: images?.map((image) => process.env.URL + image.url) || [],
-        videos: videos?.map((video) => process.env.URL + video.url || "") || [],
+        videos: videos?.map((video) => process.env.URL + video.url) || [],
         relatedServices: relatedServices?.map((service) => service.id) || [],
         relatedSkills: relatedSkills?.map((skill) => skill.id) || [],
         relatedTags: relatedTags?.map((tag) => tag.name) || [],
@@ -49,22 +51,26 @@ const fetchProjects = async ({ locale }) => {
   }
 };
 
-const fetchHero = async ({ locale }) => {
+const fetchHero = async ({ locale }): Promise<Sections.Hero> => {
   try {
     const { heading, subheading } = (await strapi
       .service("api::hero.hero")
       .find({ locale })) as { heading: string; subheading: string };
+
     return {
       heading,
       subheading,
     };
   } catch (err) {
     console.error(err);
-    return {};
+    return {
+      heading: "",
+      subheading: "",
+    };
   }
 };
 
-const fetchPortfolio = async ({ locale }) => {
+const fetchPortfolio = async ({ locale }): Promise<Sections.Portfolio> => {
   try {
     const { subheading } = (await strapi
       .service("api::portfolio.portfolio")
@@ -74,11 +80,13 @@ const fetchPortfolio = async ({ locale }) => {
     };
   } catch (err) {
     console.error(err);
-    return {};
+    return {
+      subheading: "",
+    };
   }
 };
 
-const fetchAbout = async ({ locale }) => {
+const fetchAbout = async ({ locale }): Promise<Sections.About> => {
   try {
     const { heading, paragraph, image } = (await strapi
       .service("api::about.about")
@@ -94,7 +102,11 @@ const fetchAbout = async ({ locale }) => {
     };
   } catch (err) {
     console.error(err);
-    return {};
+    return {
+      heading: "",
+      paragraph: "",
+      image: "",
+    };
   }
 };
 
@@ -107,7 +119,11 @@ export default () => ({
     }
   },
 
-  fetchAllContent: async ({ locale }: { locale: string }) => {
+  fetchAllContent: async ({
+    locale,
+  }: {
+    locale: string;
+  }): Promise<Content | any> => {
     try {
       return {
         projects: await fetchProjects({ locale }),
