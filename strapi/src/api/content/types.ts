@@ -79,11 +79,7 @@ export namespace Sections {
         value: string;
       };
       socialMedia: {
-        options: {
-          name: string;
-          link: string;
-          icon: string;
-        }[];
+        options: SocialMedia[];
       };
     };
   }
