@@ -3,7 +3,15 @@
  * returns all content in a single object for the given locale
  */
 
-import { Project, Service, Skill, Friend, Sections, Content } from "../types";
+import {
+  Project,
+  Service,
+  Skill,
+  Friend,
+  SocialMedia,
+  Sections,
+  Content,
+} from "../types";
 
 // collection types
 
@@ -141,6 +149,31 @@ const fetchFriends = async ({ locale }): Promise<Friend[]> => {
   }
 };
 
+const fetchSocialMedia = async (): Promise<SocialMedia[]> => {
+  try {
+    const { results } = (await strapi
+      .service("api::social-media.social-media")
+      .find({
+        populate: ["icon"],
+      })) as {
+      results: any[];
+    };
+
+    return results.map((socialMedia): SocialMedia => {
+      const { name, link, icon } = socialMedia;
+
+      return {
+        name,
+        link,
+        icon: process.env.URL + icon.url,
+      };
+    });
+  } catch (err) {
+    console.error(err);
+    return [];
+  }
+};
+
 // single types
 
 const fetchHero = async ({ locale }): Promise<Sections.Hero> => {
@@ -202,6 +235,67 @@ const fetchAbout = async ({ locale }): Promise<Sections.About> => {
   }
 };
 
+const fetchAvailabilityStatus = async (): Promise<boolean> => {
+  try {
+    const { status } = (await strapi
+      .service("api::availability.availability")
+      .find({})) as { status: boolean };
+    return status;
+  } catch (err) {
+    console.error(err);
+    return false;
+  }
+};
+
+const fetchContact = async ({ locale }): Promise<Sections.Contact> => {
+  try {
+    const { heading, email, phone, location, maps_link } = (await strapi
+      .service("api::contact.contact")
+      .find({ locale })) as any;
+
+    return {
+      heading,
+      availability: {
+        status: await fetchAvailabilityStatus(),
+      },
+      info: {
+        location: {
+          text: location,
+          link: maps_link,
+        },
+        email: {
+          value: email,
+        },
+        phone: {
+          value: phone,
+        },
+        socialMedia: { options: await fetchSocialMedia() },
+      },
+    };
+  } catch (err) {
+    console.error(err);
+    return {
+      heading: "",
+      availability: {
+        status: false,
+      },
+      info: {
+        location: {
+          text: "",
+          link: "",
+        },
+        email: {
+          value: "",
+        },
+        phone: {
+          value: "",
+        },
+        socialMedia: { options: [] },
+      },
+    };
+  }
+};
+
 export default () => ({
   exampleAction: async (ctx) => {
     try {
@@ -226,6 +320,7 @@ export default () => ({
           hero: await fetchHero({ locale }),
           portfolio: await fetchPortfolio({ locale }),
           about: await fetchAbout({ locale }),
+          contact: await fetchContact({ locale }),
         },
       };
     } catch (err) {
