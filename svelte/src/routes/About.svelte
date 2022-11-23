@@ -4,14 +4,14 @@
 
   const fullName = OWNER.name + ' ' + OWNER.surname
   $: heading = $content.sections.about.heading
-  $: text = $content.sections.about.text
+  $: paragraph = $content.sections.about.paragraph
   $: image = $content.sections.about.image
 </script>
 
 <section id="about">
   <h1 class="heading">{heading}</h1>
   <div class="image"><img src={image} alt={fullName} title={fullName} /></div>
-  <p class="paragraph">{text}</p>
+  <p class="paragraph">{paragraph}</p>
 </section>
 
 <style lang="scss">

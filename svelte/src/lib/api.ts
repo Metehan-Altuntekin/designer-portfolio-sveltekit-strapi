@@ -736,7 +736,7 @@ export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
     hero: {
       heading: 'Welcome to the awesome portfolio site',
       subheading:
-        "This portfolio site project made with PHP & Svelte! It runs on Apache server and doesn't require Node.js!",
+        'This portfolio site project made with SvelteKit and Strapi CMS! You can use this project as a starter for your own portfolio site. ',
     },
 
     portfolio: {
@@ -745,7 +745,8 @@ export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
 
     about: {
       heading: '3D Modeling Has Never Been So Good',
-      text: 'Lörem ipsum bröllopsklänning böpisade Sten Carlsson ofått. Kurt Bergström unavyn i sod beska ponade trigoliga dens tåsam. Modara fonade, pren ryde Amanda Holm Anton Nordström om än milar medan smartboard. Lase ladagångar. Bisade spesam, att lykynar Ove Lundberg, antina euromor Hans Hellström. Stereokemi stenode epitet innan Viola Nyberg. Åke Henriksson Oskar Dahl. Mivyling Malin Henriksson telenånade perfiering skogsbad autonade i teletåna mivik. Fer hästlasagne. Sesona vijyv. Behet fatal Kenneth Bergström mivyda. Thomas Jonasson teletassa och nilingar och pora emedan hänt afodade, hyperfaktisk: rygofårad. ',
+      paragraph:
+        'Lörem ipsum bröllopsklänning böpisade Sten Carlsson ofått. Kurt Bergström unavyn i sod beska ponade trigoliga dens tåsam. Modara fonade, pren ryde Amanda Holm Anton Nordström om än milar medan smartboard. Lase ladagångar. Bisade spesam, att lykynar Ove Lundberg, antina euromor Hans Hellström. Stereokemi stenode epitet innan Viola Nyberg. Åke Henriksson Oskar Dahl. Mivyling Malin Henriksson telenånade perfiering skogsbad autonade i teletåna mivik. Fer hästlasagne. Sesona vijyv. Behet fatal Kenneth Bergström mivyda. Thomas Jonasson teletassa och nilingar och pora emedan hänt afodade, hyperfaktisk: rygofårad. ',
       image: './assets/about-img.png',
     },
 
@@ -804,25 +805,25 @@ export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
         {
           name: 'Metehan Altuntekin',
           image: 'https://github.com/Metehan-Altuntekin.png',
-          roles: ['Frontend Developer', 'Svelte TS'],
+          roles: 'Frontend Developer Svelte TS',
           link: 'https://github.com/Metehan-Altuntekin',
         },
         {
           name: 'Ümit Ulusoy',
           image: 'https://github.com/Umit-Ulusoy.png',
-          roles: ['Backend Developer', 'PHP Laravel'],
+          roles: 'Backend Developer PHP Laravel',
           link: 'https://github.com/Umit-Ulusoy',
         },
         {
           name: 'Burak Demir',
           image: 'https://github.com/burakndmr.png',
-          roles: ['Frontend Developer', 'React.js'],
+          roles: 'Frontend Developer React.js',
           link: 'https://github.com/burakndmr',
         },
         {
           name: 'Hüsnü Mahmudizer',
           image: './assets/friends/husnu.jpg',
-          roles: ['3D Designer', '3D Animator'],
+          roles: '3D Designer 3D Animator',
           link: 'https://youtube.com',
         },
       ],
