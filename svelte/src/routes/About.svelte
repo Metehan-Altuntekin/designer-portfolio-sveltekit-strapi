@@ -1,7 +1,8 @@
 <script lang="ts">
+  import { OWNER } from '$lib/config'
   import content from '$lib/stores/content'
 
-  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  const fullName = OWNER.name + ' ' + OWNER.surname
   $: heading = $content.sections.about.heading
   $: text = $content.sections.about.text
   $: image = $content.sections.about.image

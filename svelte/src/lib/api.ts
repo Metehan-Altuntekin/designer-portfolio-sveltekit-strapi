@@ -5,12 +5,6 @@ import type { DynamicContent } from '$lib/types'
 import { language } from '$lib/stores/language'
 
 export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
-  owner: {
-    name: 'Hüsnüye',
-    surname: 'Hüsnoğlu',
-    logo: './assets/logo.png',
-  },
-
   skills: [
     {
       id: 1,

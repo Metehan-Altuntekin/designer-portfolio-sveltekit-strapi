@@ -6,9 +6,9 @@
   import Contact from './Contact.svelte'
   import Friends from './Friends.svelte'
 
-  import content from '$lib/stores/content'
+  import { OWNER } from '$lib/config'
 
-  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  const fullName = OWNER.name + ' ' + OWNER.surname
 </script>
 
 <svelte:head>

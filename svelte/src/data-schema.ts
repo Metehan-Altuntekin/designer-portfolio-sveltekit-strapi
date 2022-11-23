@@ -5,9 +5,9 @@
 
 export const dataSchema = {
   owner: {
-    name: [2, 30],
-    surname: [2, 30],
-    logo: URL,
+    $name: [2, 30],
+    $surname: [2, 30],
+    $logo: URL,
   },
 
   skills: [

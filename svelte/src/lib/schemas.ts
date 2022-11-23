@@ -191,8 +191,6 @@ export namespace sections {
 // * Content schema
 
 export const content = zod.object({
-  owner: owner,
-
   services: zod.array(service),
   skills: zod.array(skill),
   projects: zod.array(project),
@@ -253,8 +251,6 @@ export type staticContent = zod.infer<typeof staticContent>
 // * Schemas for dynamic content
 // The content that stored in database and edited by the user, fetched from the API
 export const dynamicContent = zod.object({
-  owner,
-
   skills: zod.array(skill),
   services: zod.array(service),
   projects: zod.array(project),
