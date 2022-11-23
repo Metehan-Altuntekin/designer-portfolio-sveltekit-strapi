@@ -1,6 +1,11 @@
 // import content from '$lib/stores/content'
 import type { Owner } from '$lib/types'
 
+export const API_MAIN_URL = 'http://localhost:1327/api'
+export const API_ROUTES = {
+  content: `${API_MAIN_URL}/content`,
+}
+
 export const MAIN_URL = '/'
 
 const completeUrl = (url: string) => (url.startsWith('http') ? url : `${MAIN_URL}${url}`)

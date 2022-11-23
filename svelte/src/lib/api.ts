@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { get } from 'svelte/store'
 
+import { API_ROUTES } from '$lib/config'
 import type { DynamicContent } from '$lib/types'
-import { language } from '$lib/stores/language'
 
+// This mock data is used for development purposes
 export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
   skills: [
     {
@@ -831,14 +831,14 @@ export const MOCK_DYNAMIC_CONTENT: DynamicContent = {
   },
 }
 
-export const getContent = async () => {
-  // this is temporary for development purposes
-  // await new Promise((resolve) => setTimeout(resolve, 3000))
-  return MOCK_DYNAMIC_CONTENT
+export const getContent = async ({ lang }: { lang: string }) => {
+  // for development purposes
+  // return MOCK_DYNAMIC_CONTENT
 
-  const response = await axios.get('/content.json', {
+  // fetch data from Strapi CMS
+  const response = await axios.get(API_ROUTES.content, {
     params: {
-      language: get(language),
+      locale: lang,
     },
   })
   const content: DynamicContent = response.data
