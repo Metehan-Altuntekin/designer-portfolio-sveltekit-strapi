@@ -43,7 +43,8 @@ export const locale: Readable<staticContent> = derived(language, ($language) => 
 
 // * Functions
 
-export const setHtmlLang = (lang: language) => document.documentElement.setAttribute('lang', lang)
+export const setHtmlLang = (lang: language) =>
+  typeof document !== 'undefined' && document.documentElement.setAttribute('lang', lang)
 
 // change the html lang attribute to match the language
 language.subscribe((lang) => {
