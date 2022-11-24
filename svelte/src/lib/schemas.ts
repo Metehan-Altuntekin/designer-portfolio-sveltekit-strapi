@@ -61,9 +61,9 @@ export type project = zod.infer<typeof project>
 //
 
 export const friend = zod.object({
-  name: zod.string().min(6).max(16),
+  name: zod.string().min(6).max(20),
   image: zod.string().url(),
-  roles: zod.array(zod.string().min(6).max(24)),
+  roles: zod.string().min(6).max(40),
   link: zod.string().url(),
 })
 
@@ -124,7 +124,7 @@ export namespace sections {
   export const about = zod.object({
     title: zod.string().min(2).max(16),
     heading: zod.string().min(32).max(50),
-    text: zod.string().min(500).max(700),
+    paragraph: zod.string().min(500).max(700),
     image: zod.string().url(),
   })
 
@@ -151,7 +151,7 @@ export namespace sections {
       }),
       phone: zod.object({
         title: zod.string().min(4).max(12),
-        value: zod.string().min(6).max(16), // TODO test this with regex
+        value: zod.string().min(6).max(20), // TODO test this with regex
       }),
       socialMedia: zod.object({
         title: zod.string().min(4).max(12),
@@ -191,8 +191,6 @@ export namespace sections {
 // * Content schema
 
 export const content = zod.object({
-  owner: owner,
-
   services: zod.array(service),
   skills: zod.array(skill),
   projects: zod.array(project),
@@ -253,8 +251,6 @@ export type staticContent = zod.infer<typeof staticContent>
 // * Schemas for dynamic content
 // The content that stored in database and edited by the user, fetched from the API
 export const dynamicContent = zod.object({
-  owner,
-
   skills: zod.array(skill),
   services: zod.array(service),
   projects: zod.array(project),
@@ -262,7 +258,7 @@ export const dynamicContent = zod.object({
   sections: zod.object({
     hero: sections.hero.pick({ heading: true, subheading: true }),
     portfolio: sections.portfolio.pick({ subheading: true }),
-    about: sections.about.pick({ heading: true, text: true, image: true }),
+    about: sections.about.pick({ heading: true, paragraph: true, image: true }),
     contact: zod.object({
       heading: sections.contact.shape.heading,
       availability: sections.contact.shape.availability.pick({ status: true }),

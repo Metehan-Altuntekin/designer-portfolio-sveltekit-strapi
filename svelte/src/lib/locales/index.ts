@@ -15,8 +15,8 @@ function validate(locale: staticContent) {
 }
 
 const locales = {
-  en: validate(en),
-  tr: validate(tr),
+  en,
+  tr,
 }
 
 export default locales

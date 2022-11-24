@@ -2,13 +2,13 @@
   import Icon from '@iconify/svelte'
   import { fly, fade } from 'svelte/transition'
 
-  import { NAV, ROUTES } from '$lib/config'
+  import { NAV, ROUTES, OWNER } from '$lib/config'
   import content from '$lib/stores/content'
 
   let mobileNav = false
   let mobileNavStep2 = false
 
-  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  const fullName = OWNER.name + ' ' + OWNER.surname
   $: nav = $content.sections.header.nav
 </script>
 
@@ -75,7 +75,7 @@
     background-color: var(--header-bg-color);
   }
 
-  // Logo and name of the owner
+  // Logo and name of the OWNER
   .logo {
     display: flex;
     align-items: center;

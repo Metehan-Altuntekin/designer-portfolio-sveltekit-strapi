@@ -1,4 +1,10 @@
 // import content from '$lib/stores/content'
+import type { Owner } from '$lib/types'
+
+export const API_MAIN_URL = 'http://localhost:1327/api'
+export const API_ROUTES = {
+  content: `${API_MAIN_URL}/content`,
+}
 
 export const MAIN_URL = '/'
 
@@ -34,3 +40,9 @@ export const NAV: {
     src: ROUTES.ABOUT,
   },
 ]
+
+export const OWNER: Owner = {
+  name: 'Rambocan',
+  surname: 'Ramboğlu',
+  logo: './assets/logo.png',
+}

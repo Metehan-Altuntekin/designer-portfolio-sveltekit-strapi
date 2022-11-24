@@ -11,7 +11,7 @@ import { staticContent } from '$lib/schemas'
 
 // * Constants
 
-export const DEFAULT_LANGUAGE = 'tr'
+export const DEFAULT_LANGUAGE = 'en'
 
 export const LANGUAGES = {
   en: {
@@ -43,7 +43,8 @@ export const locale: Readable<staticContent> = derived(language, ($language) => 
 
 // * Functions
 
-export const setHtmlLang = (lang: language) => document.documentElement.setAttribute('lang', lang)
+export const setHtmlLang = (lang: language) =>
+  typeof document !== 'undefined' && document.documentElement.setAttribute('lang', lang)
 
 // change the html lang attribute to match the language
 language.subscribe((lang) => {
@@ -65,11 +66,23 @@ export function setLanguage(lang: language) {
   }
 }
 
-export function initLanguage() {
-  const browserLang = navigator.language.split('-')[0]
+/**
+ * Check if a language is supported, if not return the default language
+ */
+export async function determineLanguage(requestedLanguage?: string) {
+  // if it's a browser, get the language from the browser
+  const browserLang =
+    typeof navigator !== 'undefined' ? navigator.language.split(',')[0].split('-')[0] : requestedLanguage
 
   // if the language of the browser is not supported, use the default language
-  const lang: language = Object.keys(LANGUAGES).includes(browserLang) ? (browserLang as language) : DEFAULT_LANGUAGE
+  const lang: language =
+    browserLang && Object.keys(LANGUAGES).includes(browserLang) ? (browserLang as language) : DEFAULT_LANGUAGE
+
+  return lang
+}
+
+export async function initLanguage(requestedLanguage?: string) {
+  const lang: language = await determineLanguage(requestedLanguage)
 
   setLanguage(lang)
 }

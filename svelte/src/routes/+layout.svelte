@@ -5,13 +5,13 @@
   import ProjectDetailsModal from '$lib/components/ProjectDetailsModal.svelte'
   import NotificationProvider from './NotificationProvider.svelte'
 
-  import content from '$lib/stores/content'
+  import { OWNER } from '$lib/config'
 
-  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  const fullName = OWNER.name + ' ' + OWNER.surname
 </script>
 
 <svelte:head>
-  <link rel="icon" type="image" href={$content.owner.logo} />
+  <link rel="icon" type="image" href={OWNER.logo} />
   <!-- <meta name="description" content={$content.description} /> -->
 </svelte:head>
 

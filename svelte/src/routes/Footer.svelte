@@ -1,15 +1,14 @@
 <script lang="ts">
-  import { ROUTES } from '$lib/config'
+  import { ROUTES, OWNER } from '$lib/config'
   import content from '$lib/stores/content'
 
-  $: logo = $content.owner.logo
   $: disclaimer = $content.sections.footer.disclaimer
   $: copyright = $content.sections.footer.copyright
   $: privacyPolicy = $content.sections.footer.privacyPolicy
 </script>
 
 <footer id="footer">
-  <div class="logo-watermark"><img src={logo} alt="Logo" aria-hidden="true" /></div>
+  <div class="logo-watermark"><img src={OWNER.logo} alt="Logo" aria-hidden="true" /></div>
   <div class="disclaimer-container">
     <h1>{copyright} <sup>ⓒ</sup></h1>
     <h2>{disclaimer}</h2>

@@ -11,11 +11,9 @@
     <img src={image} alt={`Picture of ${name}`} />
     <figcaption>
       <h1>{name}</h1>
-      <ul>
-        {#each roles as role}
-          <li>{role}</li>
-        {/each}
-      </ul>
+      <span>
+        {roles}
+      </span>
     </figcaption>
   </figure>
 </a>
@@ -64,16 +62,15 @@
     margin-bottom: 0.5em;
   }
 
-  figcaption ul {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  figcaption ul li {
+  figcaption span {
     font-size: 0.9rem;
     font-weight: 600;
     color: var(--color-primary);
+    white-space: pre-wrap;
+
+    text-align: center;
     line-height: 1.1;
+    margin-right: 1em;
+    margin-left: 1em;
   }
 </style>

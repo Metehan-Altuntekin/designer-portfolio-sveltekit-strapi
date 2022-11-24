@@ -1,0 +1,42 @@
+{
+  "kind": "singleType",
+  "collectionName": "friends_sections",
+  "info": {
+    "singularName": "friends-section",
+    "pluralName": "friends-sections",
+    "displayName": "friends section",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "heading": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true,
+      "maxLength": 20,
+      "minLength": 8
+    },
+    "subheading": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "maxLength": 40,
+      "minLength": 15,
+      "required": true
+    }
+  }
+}

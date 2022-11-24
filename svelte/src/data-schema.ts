@@ -5,9 +5,9 @@
 
 export const dataSchema = {
   owner: {
-    name: [2, 30],
-    surname: [2, 30],
-    logo: URL,
+    $name: [2, 30],
+    $surname: [2, 30],
+    $logo: URL,
   },
 
   skills: [
@@ -91,7 +91,7 @@ export const dataSchema = {
     about: {
       $title: [4, 16], // About
       heading: [32, 50],
-      text: [500, 700],
+      paragraph: [500, 700],
       image: URL,
     },
 
@@ -114,7 +114,7 @@ export const dataSchema = {
         },
         phone: {
           $title: [4, 12],
-          value: [6, 16],
+          value: [6, 20],
         },
         socialMedia: {
           $title: [4, 12],
@@ -135,9 +135,9 @@ export const dataSchema = {
       subheading: [15, 40],
       friendsList: [
         {
-          name: [6, 16],
+          name: [6, 20],
           image: URL,
-          roles: [[6, 24]],
+          roles: [6, 40],
           link: URL,
         },
       ],

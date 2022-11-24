@@ -1,6 +1,7 @@
 <script lang="ts">
   import { fly } from 'svelte/transition'
 
+  import { OWNER } from '$lib/config'
   import content from '$lib/stores/content'
   import { filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
   import { openModal } from '$lib/stores/projectDetailsModal'
@@ -13,7 +14,7 @@
   $: subheading = $content.sections.portfolio.subheading
   $: filterNames = $content.sections.portfolio.filters
 
-  $: fullName = $content.owner.name + ' ' + $content.owner.surname
+  $: fullName = OWNER.name + ' ' + OWNER.surname
 </script>
 
 <svelte:head>
