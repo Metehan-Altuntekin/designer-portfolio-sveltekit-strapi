@@ -11,7 +11,7 @@ import { staticContent } from '$lib/schemas'
 
 // * Constants
 
-export const DEFAULT_LANGUAGE = 'tr'
+export const DEFAULT_LANGUAGE = 'en'
 
 export const LANGUAGES = {
   en: {
