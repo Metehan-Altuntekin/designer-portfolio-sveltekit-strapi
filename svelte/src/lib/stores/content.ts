@@ -12,11 +12,11 @@ export const content: Readable<Content> = derived([dynamicContent, locale], ([$d
 })
 
 // ! This function has to be run before the app renders
-export async function initContent() {
-  if (get(dynamicContent) !== null) return // content already loaded
+export async function initContent(content?: DynamicContent) {
+  if (typeof content !== 'undefined' && get(dynamicContent) === content) return // already initialized with the same content
+  if (typeof content === 'undefined' && get(dynamicContent) !== null) return // already initialized with a content
 
-  const data = await getContent({ lang: get(language) })
-  dynamicContent.set(data)
+  dynamicContent.set(content || (await getContent({ lang: get(language) })))
 }
 
 export default content
