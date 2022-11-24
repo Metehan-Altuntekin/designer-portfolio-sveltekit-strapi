@@ -1,19 +1,16 @@
-// To enable prerender for all of the pages
-export const prerender = true
-export const ssr = false
+export const ssr = true
 
-// initialize the content store before the app starts
-
-import type { PageLoad } from './$types'
+import type { LayoutLoad } from './$types'
 
 import { initContent } from '$lib/stores/content'
 import { initLanguage } from '$lib/stores/language'
 
-export const load: PageLoad = async () => {
-  // initialize the language store
-  initLanguage()
-  // initialize the content store
-  await initContent()
+export const load: LayoutLoad = async (props) => {
+  // initialize the language store with the language from the request
+  await initLanguage(props.data.lang)
+
+  // initialize the content store with the content from the server side
+  await initContent(props.data.content)
 
   return
 }
