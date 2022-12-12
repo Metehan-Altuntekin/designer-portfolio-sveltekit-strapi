@@ -11,7 +11,7 @@ import {
   SocialMedia,
   Sections,
   Content,
-} from "../types";
+} from "../../../types";
 
 // collection types
 
