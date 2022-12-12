@@ -4,6 +4,7 @@ import type { Owner } from '$lib/types'
 export const API_MAIN_URL = 'http://localhost:1327/api'
 export const API_ROUTES = {
   content: `${API_MAIN_URL}/content`,
+  visitorMessage: `${API_MAIN_URL}/visitor-messages`,
 }
 
 export const MAIN_URL = '/'

@@ -5,6 +5,7 @@ import type { AxiosProgressEvent } from 'axios'
 import type { Writable } from 'svelte/store'
 import { writable } from 'svelte/store'
 
+import { API_ROUTES } from '$lib/config'
 import { createNotification, deleteNotification } from '$lib/stores/notification'
 
 // regex to match phone numbers in the formats:
@@ -95,11 +96,18 @@ export async function sendMessage(message: Schema) {
 
   // Prepare data
   const formData = new FormData()
-  formData.append('fullName', message.fullName)
-  formData.append('email', message.email)
-  if (message.tel) formData.append('tel', message.tel)
-  formData.append('message', message.message)
-  if (message.files) message.files.forEach((file) => formData.append('files', file))
+
+  // Strapi expects data to be a stringified JSON object, except for files
+  formData.append(
+    'data',
+    JSON.stringify({
+      fullName: message.fullName,
+      email: message.email,
+      tel: message.tel,
+      message: message.message,
+    })
+  )
+  if (message.files) message.files.forEach((file) => formData.append(`files.files`, file, file.name))
 
   try {
     // Create request
@@ -111,7 +119,7 @@ export async function sendMessage(message: Schema) {
       },
     }
 
-    const response = await axios.post('/api/contact', formData, config)
+    const response = await axios.post(API_ROUTES.visitorMessage, formData, config)
 
     progressStore.set(1)
     pending.set(false)
