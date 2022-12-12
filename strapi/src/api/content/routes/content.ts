@@ -10,14 +10,5 @@ export default {
         auth: false,
       },
     },
-    {
-      method: "GET",
-      path: "/content/example",
-      handler: "content.exampleAction",
-      config: {
-        policies: [],
-        middlewares: [],
-      },
-    },
   ],
 };
