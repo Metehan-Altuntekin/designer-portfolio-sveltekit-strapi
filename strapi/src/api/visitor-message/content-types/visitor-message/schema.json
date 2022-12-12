@@ -1,0 +1,46 @@
+{
+  "kind": "collectionType",
+  "collectionName": "visitor_messages",
+  "info": {
+    "singularName": "visitor-message",
+    "pluralName": "visitor-messages",
+    "displayName": "Visitor Message",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string",
+      "required": true,
+      "maxLength": 30,
+      "minLength": 4
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "tel": {
+      "type": "string",
+      "maxLength": 20,
+      "minLength": 7,
+      "regex": "^(?:\\+\\d{1,3}|0\\d{1,3}|00\\d{1,2})?(?:\\s?\\(\\d+\\))?(?:[-\\s.]|\\d)+$"
+    },
+    "message": {
+      "type": "text",
+      "required": true,
+      "maxLength": 1000,
+      "minLength": 10,
+      "unique": true
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": ["images", "files", "videos", "audios"]
+    }
+  }
+}
