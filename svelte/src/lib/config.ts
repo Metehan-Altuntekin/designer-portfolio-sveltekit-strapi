@@ -1,10 +1,10 @@
 // import content from '$lib/stores/content'
 import type { Owner } from '$lib/types'
 
-export const API_MAIN_URL = import.meta.env.VITE_API_URL
+export const API_MAIN_URL = import.meta.env.VITE_API_URL.replace(/\/$/, '')
 export const API_ROUTES = {
-  content: `${API_MAIN_URL}content`,
-  visitorMessage: `${API_MAIN_URL}visitor-messages`,
+  content: `${API_MAIN_URL}/content`,
+  visitorMessage: `${API_MAIN_URL}/visitor-messages`,
 }
 
 export const MAIN_URL = '/'
