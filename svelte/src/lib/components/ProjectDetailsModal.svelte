@@ -11,7 +11,8 @@
 </script>
 
 {#if $selectedProject}
-  <div class="wrapper" on:click|self={closeModal}>
+  <div class="wrapper" on:click|self={closeModal} on:keyup|self={closeModal}>
+    >
     <div class="container">
       <figure>
         <div class="slider">

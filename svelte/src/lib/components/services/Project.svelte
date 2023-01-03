@@ -14,7 +14,12 @@
   const { id, name, thumbnail: src, relatedServices, relatedSkills, relatedTags } = project
 </script>
 
-<figure transition:fly={{ y: 100 }} on:click={() => openModal(project)} style={`--aspect-ratio:${aspectRatio}`}>
+<figure
+  transition:fly={{ y: 100 }}
+  on:click={() => openModal(project)}
+  on:keyup={() => openModal(project)}
+  style={`--aspect-ratio:${aspectRatio}`}
+>
   <img {src} alt={name} />
   <figcaption>
     <div class="left-col">
