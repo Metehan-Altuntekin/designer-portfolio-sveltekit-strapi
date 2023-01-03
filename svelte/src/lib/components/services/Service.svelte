@@ -36,7 +36,7 @@
   </section>
 
   <section class="portfolio">
-    {#if projects.length < 1}
+    {#if !projects || projects.length < 1}
       <div class="no-data">No projects were found with the given criteria</div>
     {:else}
       {#each projects.slice(0, 4) as project (project.id)}
