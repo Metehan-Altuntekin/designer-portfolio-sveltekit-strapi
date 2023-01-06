@@ -11,9 +11,9 @@
   },
   "devDependencies": {},
   "dependencies": {
-    "@strapi/plugin-i18n": "4.5.1",
-    "@strapi/plugin-users-permissions": "4.5.1",
-    "@strapi/strapi": "4.5.1",
+    "@strapi/plugin-i18n": "4.5.5",
+    "@strapi/plugin-users-permissions": "4.5.5",
+    "@strapi/strapi": "4.5.5",
     "pg": "^8.8.0",
     "pg-connection-string": "^2.5.0"
   },
