@@ -101,10 +101,10 @@ export async function sendMessage(message: Schema) {
   formData.append(
     'data',
     JSON.stringify({
-      fullName: message.fullName,
-      email: message.email,
-      tel: message.tel,
-      message: message.message,
+      fullName: message.fullName || undefined,
+      email: message.email || undefined,
+      tel: message.tel || undefined,
+      message: message.message || undefined,
     })
   )
   if (message.files) message.files.forEach((file) => formData.append(`files.files`, file, file.name))
