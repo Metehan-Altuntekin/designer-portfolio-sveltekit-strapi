@@ -3,7 +3,7 @@
 
   import { OWNER } from '$lib/config'
   import content from '$lib/stores/content'
-  import { filterOptions, filterParams, filteredProjects } from '$lib/stores/portfolio'
+  import { filterOptions, filterParams, filteredProjects, resetFilters } from '$lib/stores/portfolio'
   import { openModal } from '$lib/stores/projectDetailsModal'
 
   import ServicesFilter from '$lib/components/portfolio/ServicesFilter.svelte'
@@ -31,7 +31,7 @@
       <ServicesFilter services={$filterOptions.services} bind:value={$filterParams.services} />
       <SkillsFilter skills={$filterOptions.skills} bind:value={$filterParams.skills} />
       <TagsFilter tags={$filterOptions.tags} bind:value={$filterParams.tags} />
-      <button class="button secondary sm">Reset</button>
+      <button class="button secondary sm" on:click={resetFilters} on:keyup={resetFilters}>Reset</button>
     </div>
   </header>
   <div class="projects-area">

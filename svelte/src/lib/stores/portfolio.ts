@@ -51,3 +51,7 @@ export const filteredProjects: Readable<Project[]> = derived([filterParams, proj
     return true
   })
 })
+
+export const resetFilters = () => {
+  filterParams.set({ services: [], skills: [], tags: [] })
+}
