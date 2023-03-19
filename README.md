@@ -1,4 +1,4 @@
-# portfolio-site-with-PHP-Svelte-TS
+# portfolio-site-SvelteKit-Strapi
 
 Live: https://www.ramazankocabiyik.com
 
