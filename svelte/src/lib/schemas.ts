@@ -46,6 +46,7 @@ export type service = zod.infer<typeof service>
 export const project = zod.object({
   id: zod.number(),
   name: zod.string().min(4).max(20),
+  order: zod.number().min(0).optional(),
   thumbnail: zod.string().url(),
   images: zod.array(zod.string().url()),
   videos: zod.array(zod.string().url()),

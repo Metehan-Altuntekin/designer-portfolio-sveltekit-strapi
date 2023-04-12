@@ -42,11 +42,13 @@ const fetchProjects = async ({ locale }): Promise<Project[]> => {
         relatedServices,
         relatedSkills,
         relatedTags,
+        order,
       } = project;
 
       return {
         id,
         name,
+        ...(order && { order }),
         description: description,
         thumbnail: process.env.URL + thumbnail.url,
         images: images?.map((image) => process.env.URL + image.url) || [],
