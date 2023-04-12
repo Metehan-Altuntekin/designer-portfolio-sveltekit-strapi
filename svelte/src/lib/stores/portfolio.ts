@@ -35,21 +35,23 @@ export const filterOptions: Readable<{ services: Service[]; skills: Skill[]; tag
 )
 
 export const filteredProjects: Readable<Project[]> = derived([filterParams, projects], ([$filterParams, $projects]) => {
-  return $projects.filter((p) => {
-    if ($filterParams.services.length > 0) {
-      if (!$filterParams.services.some((s) => p.relatedServices.includes(s))) return false
-    }
+  return $projects
+    .filter((p) => {
+      if ($filterParams.services.length > 0) {
+        if (!$filterParams.services.some((s) => p.relatedServices.includes(s))) return false
+      }
 
-    if ($filterParams.skills.length > 0) {
-      if (!$filterParams.skills.some((s) => p.relatedSkills.includes(s))) return false
-    }
+      if ($filterParams.skills.length > 0) {
+        if (!$filterParams.skills.some((s) => p.relatedSkills.includes(s))) return false
+      }
 
-    if ($filterParams.tags.length > 0) {
-      if (!$filterParams.tags.some((t) => p.relatedTags.includes(t))) return false
-    }
+      if ($filterParams.tags.length > 0) {
+        if (!$filterParams.tags.some((t) => p.relatedTags.includes(t))) return false
+      }
 
-    return true
-  })
+      return true
+    })
+    .sort((a, b) => (a.order || 9999) - (b.order || 9999))
 })
 
 export const resetFilters = () => {
