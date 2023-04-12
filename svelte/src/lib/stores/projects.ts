@@ -6,7 +6,7 @@ import content from '$lib/stores/content'
 
 // All the projects with no order
 const projects: Readable<Project[]> = derived(content, ($content) => {
-  return $content?.projects || []
+  return $content?.projects.sort((a, b) => (a.order || 9999) - (b.order || 9999)) || []
 })
 
 export default projects
